@@ -38,89 +38,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// ========== STATS COUNTER ANIMATION ==========
-const statNumbers = document.querySelectorAll('.stat-number');
-let statsAnimated = false;
-
-function animateStats() {
-    statNumbers.forEach(stat => {
-        const target = parseInt(stat.getAttribute('data-target'));
-        const duration = 2000; // 2 seconds
-        const increment = target / (duration / 16); // 60fps
-        let current = 0;
-        
-        const updateNumber = () => {
-            current += increment;
-            if (current < target) {
-                stat.textContent = Math.floor(current);
-                requestAnimationFrame(updateNumber);
-            } else {
-                stat.textContent = target;
-                // Add + sign for support hours
-                if (target === 24) {
-                    stat.textContent = '24/7';
-                } else if (target >= 10) {
-                    stat.textContent = target + '+';
-                }
-            }
-        };
-        
-        updateNumber();
-    });
-}
-
-// Trigger stats animation when section is visible
-const statsSection = document.querySelector('.stats');
-
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && !statsAnimated) {
-            animateStats();
-            statsAnimated = true;
-        }
-    });
-}, { threshold: 0.5 });
-
-statsObserver.observe(statsSection);
-
-// ========== TESTIMONIAL SLIDER ==========
-const testimonials = document.querySelectorAll('.testimonial-card');
-const dots = document.querySelectorAll('.dot');
-let currentTestimonial = 0;
-let testimonialInterval;
-
-function showTestimonial(index) {
-    testimonials.forEach((t, i) => {
-        t.classList.remove('active');
-        dots[i].classList.remove('active');
-    });
-    
-    testimonials[index].classList.add('active');
-    dots[index].classList.add('active');
-}
-
-function nextTestimonial() {
-    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-    showTestimonial(currentTestimonial);
-}
-
-// Auto-rotate testimonials
-function startTestimonialSlider() {
-    testimonialInterval = setInterval(nextTestimonial, 5000);
-}
-
-startTestimonialSlider();
-
-// Click on dots to change testimonial
-dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        clearInterval(testimonialInterval);
-        currentTestimonial = index;
-        showTestimonial(currentTestimonial);
-        startTestimonialSlider();
-    });
-});
-
 // ========== BACK TO TOP BUTTON ==========
 const backToTopBtn = document.getElementById('backToTop');
 
@@ -168,9 +85,6 @@ contactForm.addEventListener('submit', function(e) {
         service: document.getElementById('service').value,
         message: document.getElementById('message').value
     };
-    
-    // Here you would normally send the data to a server
-    // For now, we'll show a success message
     
     // Create success message
     const successMsg = document.createElement('div');
@@ -220,7 +134,7 @@ if (newsletterForm) {
 
 // ========== SCROLL ANIMATIONS ==========
 const animateOnScroll = () => {
-    const elements = document.querySelectorAll('.service-card, .portfolio-item, .team-member, .feature');
+    const elements = document.querySelectorAll('.service-card, .portfolio-item, .feature');
     
     elements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
@@ -234,7 +148,7 @@ const animateOnScroll = () => {
 };
 
 // Set initial state for animated elements
-document.querySelectorAll('.service-card, .portfolio-item, .team-member, .feature').forEach(el => {
+document.querySelectorAll('.service-card, .portfolio-item, .feature').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'all 0.6s ease';
