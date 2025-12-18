@@ -582,7 +582,13 @@ img {
     gap: 50px;
     margin-bottom: 50px;
 }
-
+.about-img-custom {
+    max-height: 500px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+}
 .footer-about p {
     color: var(--text-light);
     line-height: 1.8;
