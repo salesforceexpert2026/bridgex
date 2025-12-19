@@ -1,189 +1,170 @@
-// ========== MOBILE MENU TOGGLE ==========
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const navLinks = document.getElementById('navLinks');
-
-mobileMenuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
     
-    // Toggle icon between bars and X
-    const icon = mobileMenuBtn.querySelector('i');
-    if (navLinks.classList.contains('active')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-    } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
+    // ========== MOBILE MENU TOGGLE ==========
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const navDropdown = document.getElementById('navDropdown');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
     }
-});
 
-// Close mobile menu when clicking a link
-navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
-        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-    });
-});
+    // ========== MOBILE DROPDOWN TOGGLE ==========
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
 
-// ========== NAVBAR SCROLL EFFECT ==========
-const navbar = document.querySelector('.navbar');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-        navbar.style.padding = '10px 0';
-        navbar.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
-    } else {
-        navbar.style.padding = '15px 0';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+    if (dropdownToggle && navDropdown) {
+        dropdownToggle.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                navDropdown.classList.toggle('active');
+            }
+        });
     }
-});
 
-// ========== BACK TO TOP BUTTON ==========
-const backToTopBtn = document.getElementById('backToTop');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) {
-        backToTopBtn.classList.add('visible');
-    } else {
-        backToTopBtn.classList.remove('visible');
-    }
-});
-
-backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    // ========== CLOSE DROPDOWN ON LINK CLICK ==========
+    document.querySelectorAll('.dropdown-link').forEach(function(link) {
+        link.addEventListener('click', function() {
+            if (dropdownMenu) {
+                dropdownMenu.classList.add('hide');
+                setTimeout(function() {
+                    dropdownMenu.classList.remove('hide');
+                }, 500);
+            }
+            if (navDropdown) {
+                navDropdown.classList.remove('active');
+            }
+            if (navLinks) {
+                navLinks.classList.remove('active');
+            }
+            if (mobileMenuBtn) {
+                var icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
     });
-});
 
-// ========== SMOOTH SCROLL FOR NAV LINKS ==========
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offsetTop = target.offsetTop - 80; // Account for fixed navbar
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
+    // ========== NAVBAR SCROLL EFFECT ==========
+    var navbar = document.querySelector('.navbar');
 
-// ========== CONTACT FORM HANDLING ==========
-const contactForm = document.getElementById('contactForm');
-
-contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        subject: document.getElementById('subject').value,
-        service: document.getElementById('service').value,
-        message: document.getElementById('message').value
-    };
-    
-    // Create success message
-    const successMsg = document.createElement('div');
-    successMsg.className = 'form-success';
-    successMsg.innerHTML = `
-        <i class="fas fa-check-circle"></i>
-        <p>Thank you ${formData.name}! Your message has been sent successfully. We'll get back to you soon!</p>
-    `;
-    successMsg.style.cssText = `
-        background: #10b981;
-        color: white;
-        padding: 20px;
-        border-radius: 10px;
-        text-align: center;
-        margin-top: 20px;
-        animation: fadeIn 0.5s ease;
-    `;
-    
-    // Add success message
-    contactForm.appendChild(successMsg);
-    
-    // Reset form
-    contactForm.reset();
-    
-    // Remove success message after 5 seconds
-    setTimeout(() => {
-        successMsg.remove();
-    }, 5000);
-});
-
-// ========== NEWSLETTER FORM ==========
-const newsletterForm = document.querySelector('.newsletter-form');
-
-if (newsletterForm) {
-    newsletterForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = this.querySelector('input').value;
-        
-        // Show success
-        this.innerHTML = `
-            <p style="color: #10b981; font-weight: 500;">
-                <i class="fas fa-check"></i> Subscribed successfully!
-            </p>
-        `;
-    });
-}
-
-// ========== SCROLL ANIMATIONS ==========
-const animateOnScroll = () => {
-    const elements = document.querySelectorAll('.service-card, .portfolio-item, .feature');
-    
-    elements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        
-        if (elementTop < windowHeight - 100) {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-        }
-    });
-};
-
-// Set initial state for animated elements
-document.querySelectorAll('.service-card, .portfolio-item, .feature').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'all 0.6s ease';
-});
-
-// Run on scroll
-window.addEventListener('scroll', animateOnScroll);
-
-// Run once on load
-window.addEventListener('load', animateOnScroll);
-
-// ========== ACTIVE NAV LINK ON SCROLL ==========
-const sections = document.querySelectorAll('section[id]');
-
-window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    
-    sections.forEach(section => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
-        const sectionId = section.getAttribute('id');
-        
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            document.querySelector('.nav-links a[href*=' + sectionId + ']')?.classList.add('active');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+            navbar.style.padding = '0';
+            navbar.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
         } else {
-            document.querySelector('.nav-links a[href*=' + sectionId + ']')?.classList.remove('active');
+            navbar.style.padding = '5px 0';
+            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
         }
     });
-});
 
-// ========== PAGE LOAD ANIMATION ==========
-window.addEventListener('load', () => {
-    document.body.style.opacity = '1';
-});
+    // ========== BACK TO TOP BUTTON ==========
+    var backToTopBtn = document.getElementById('backToTop');
 
-// Initially hide body for smooth load
-document.body.style.opacity = '0';
-document.body.style.transition = 'opacity 0.5s ease';
+    if (backToTopBtn) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // ========== SMOOTH SCROLL FOR NAV LINKS ==========
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+            var href = this.getAttribute('href');
+            if (href !== '#' && href.length > 1) {
+                e.preventDefault();
+                var target = document.querySelector(href);
+                if (target) {
+                    var offsetTop = target.offsetTop - 100;
+                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                    
+                    // Close mobile menu
+                    if (navLinks) navLinks.classList.remove('active');
+                    if (mobileMenuBtn) {
+                        var icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                    if (navDropdown) navDropdown.classList.remove('active');
+                }
+            }
+        });
+    });
+
+    // ========== CONTACT FORM HANDLING ==========
+    var contactForm = document.getElementById('contactForm');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            var name = document.getElementById('name').value;
+            
+            var successMsg = document.createElement('div');
+            successMsg.className = 'form-success';
+            successMsg.innerHTML = '<i class="fas fa-check-circle"></i><p>Thank you ' + name + '! Your message has been sent successfully. We\'ll get back to you soon!</p>';
+            successMsg.style.cssText = 'background: #10b981; color: white; padding: 20px; border-radius: 10px; text-align: center; margin-top: 20px;';
+            
+            contactForm.appendChild(successMsg);
+            contactForm.reset();
+            
+            setTimeout(function() {
+                successMsg.remove();
+            }, 5000);
+        });
+    }
+
+    // ========== NEWSLETTER FORM ==========
+    var newsletterForm = document.querySelector('.newsletter-form');
+
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            this.innerHTML = '<p style="color: #10b981; font-weight: 500;"><i class="fas fa-check"></i> Subscribed successfully!</p>';
+        });
+    }
+
+    // ========== SCROLL ANIMATIONS ==========
+    function animateOnScroll() {
+        var elements = document.querySelectorAll('.service-card, .portfolio-item, .feature, .industry-card');
+        
+        elements.forEach(function(element) {
+            var elementTop = element.getBoundingClientRect().top;
+            var windowHeight = window.innerHeight;
+            
+            if (elementTop < windowHeight - 100) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    }
+
+    document.querySelectorAll('.service-card, .portfolio-item, .feature, .industry-card').forEach(function(el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'all 0.6s ease';
+    });
+
+    window.addEventListener('scroll', animateOnScroll);
+    animateOnScroll();
+
+});
