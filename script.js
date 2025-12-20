@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 dropdownMenu.classList.add('hide');
                 setTimeout(function() {
                     dropdownMenu.classList.remove('hide');
-                }, 500);
+                }, 5000);
             }
             if (navDropdown) {
                 navDropdown.classList.remove('active');
