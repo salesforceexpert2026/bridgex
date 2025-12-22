@@ -53,7 +53,7 @@
         img { max-width: 80%; display: block; }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -124,7 +124,7 @@
             background: linear-gradient(135deg, var(--blue-700), var(--blue-800));
         }
 
-        /* ========== DROPDOWN MENU ========== */
+        /* ========== DROPDOWN MENU - IMPROVED ========== */
         .nav-dropdown {
             position: relative;
         }
@@ -144,23 +144,46 @@
         .dropdown-panel {
             position: fixed;
             top: 80px;
-            left: 0;
-            right: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
             background: var(--white);
             box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
-            padding: 40px 0;
+            padding: 24px 0;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-10px);
             transition: all 0.3s ease;
             z-index: 999;
             border-top: 3px solid var(--blue-600);
+            border-radius: 0 0 16px 16px;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        /* Custom scrollbar for dropdown */
+        .dropdown-panel::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .dropdown-panel::-webkit-scrollbar-track {
+            background: var(--slate-100);
+            border-radius: 4px;
+        }
+
+        .dropdown-panel::-webkit-scrollbar-thumb {
+            background: var(--blue-600);
+            border-radius: 4px;
+        }
+
+        .dropdown-panel::-webkit-scrollbar-thumb:hover {
+            background: var(--blue-700);
         }
 
         .dropdown-panel.active {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0);
+            transform: translateX(-50%) translateY(0);
         }
 
         .nav-dropdown:hover > a i,
@@ -169,37 +192,37 @@
         }
 
         .dropdown-inner {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
             padding: 0 24px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 48px;
+            gap: 32px;
         }
 
         .dropdown-col h5 {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             color: var(--blue-600);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
             border-bottom: 2px solid var(--blue-600);
         }
 
         .dropdown-col ul {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 2px;
         }
 
         .dropdown-col ul li a {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 10px 0;
-            font-size: 15px;
+            gap: 8px;
+            padding: 8px 0;
+            font-size: 13px;
             color: var(--slate-600);
             transition: all 0.2s;
         }
@@ -210,7 +233,7 @@
         }
 
         .dropdown-col ul li a i {
-            font-size: 12px;
+            font-size: 10px;
             color: var(--blue-600);
         }
 
@@ -404,6 +427,96 @@
             margin: 0 auto;
         }
 
+        /* ========== PAIN POINTS / CHALLENGES SECTION ========== */
+        .challenges {
+            background: linear-gradient(180deg, var(--slate-900) 0%, var(--slate-800) 100%);
+            padding: 80px 0;
+        }
+
+        .challenges-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .challenges-header h2 {
+            font-size: clamp(24px, 3.5vw, 36px);
+            font-weight: 800;
+            color: var(--white);
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+
+        .challenges-header h2 .highlight {
+            background: linear-gradient(135deg, var(--cyan-400), #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+
+        .challenge-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .challenge-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blue-600), var(--cyan-400));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .challenge-card:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--blue-600);
+            transform: translateY(-5px);
+        }
+
+        .challenge-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .challenge-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--blue-600), var(--cyan-400));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+
+        .challenge-icon i {
+            font-size: 20px;
+            color: var(--white);
+        }
+
+        .challenge-card p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
         /* ========== SERVICES ========== */
         .services {
             background: var(--white);
@@ -475,7 +588,21 @@
 
         /* ========== INDUSTRIES ========== */
         .industries {
-            background: var(--slate-50);
+            background: url('IndustryBackground.png') center center / cover no-repeat;
+            position: relative;
+        }
+
+        .industries::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(248, 250, 252, 0.75);
+            z-index: 1;
+        }
+
+        .industries .container {
+            position: relative;
+            z-index: 2;
         }
 
         .industries-grid {
@@ -1135,11 +1262,18 @@
         }
 
         /* ========== RESPONSIVE ========== */
+        @media (max-width: 1200px) {
+            .challenges-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
         @media (max-width: 1024px) {
             .services-grid { grid-template-columns: repeat(2, 1fr); }
             .industries-grid { grid-template-columns: repeat(4, 1fr); }
             .about-grid { gap: 48px; }
             .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .challenges-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 768px) {
@@ -1157,6 +1291,8 @@
                 box-shadow: 0 20px 40px rgba(0,0,0,0.1);
                 transform: translateY(-200%);
                 transition: transform 0.3s;
+                max-height: 80vh;
+                overflow-y: auto;
             }
             
             .nav-links.active { transform: translateY(0); }
@@ -1170,6 +1306,9 @@
                 border: 1px solid var(--slate-200);
                 border-radius: 12px;
                 border-top: 3px solid var(--blue-600);
+                max-height: 300px;
+                overflow-y: auto;
+                width: 100%;
             }
             
             .dropdown-inner {
@@ -1195,6 +1334,9 @@
             .form-row { grid-template-columns: 1fr; }
             
             .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+
+            .challenges-grid { grid-template-columns: 1fr; }
+            .challenges { padding: 60px 0; }
         }
 
         @media (max-width: 480px) {
@@ -1231,12 +1373,12 @@
                                         <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Consulting</a></li>
                                         <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Manage Services</a></li>
                                         <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Salesforce Training</a></li>
-										<li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Salesforce Integration</a></li>
-                                        <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Salesoforce Omni Studio</a></li>
-                                        <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Salesforce Ai Services </a></li>
-                                        <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Salesforce Marketing Cloud </a></li>
-										<li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Salesforce Sales & Service Cloud</a></li>
-                                        <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Salesoforce Health cloud</a></li>
+                                        <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Salesforce Integration</a></li>
+                                        <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Salesforce Omni Studio</a></li>
+                                        <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Salesforce AI Services</a></li>
+                                        <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Salesforce Marketing Cloud</a></li>
+                                        <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Salesforce Sales & Service Cloud</a></li>
+                                        <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Salesforce Health Cloud</a></li>
                                         <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Salesforce Tableau</a></li>
                                         <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Salesforce Experience Cloud</a></li>
                                     </ul>
@@ -1255,11 +1397,9 @@
                                         <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Social Media Management</a></li>
                                         <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Email Marketing</a></li>
                                         <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Digital Marketing</a></li>
-										<li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Lead Generation</a></li>
+                                        <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Lead Generation</a></li>
                                         <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> Paid Ads</a></li>
-										<li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> 
-										SEO Services</a></li>
-                                        
+                                        <li><a href="#services" class="dropdown-link"><i class="fas fa-check"></i> SEO Services</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -1308,6 +1448,57 @@
                         <div class="stat-number">10+</div>
                         <div class="stat-label">Years Experience</div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHALLENGES / PAIN POINTS SECTION -->
+    <section class="challenges">
+        <div class="container">
+            <div class="challenges-header">
+                <h2>We turn <span class="highlight">Salesforce and tech stack automation</span> into a growth engine, built to scale, optimize, and deliver real results.</h2>
+            </div>
+            <div class="challenges-grid">
+                <div class="challenge-card">
+                    <div class="challenge-icon"><i class="fas fa-dollar-sign"></i></div>
+                    <p>Is Salesforce feeling more like a cost center than a growth engine?</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon"><i class="fas fa-table"></i></div>
+                    <p>Are your teams still relying on spreadsheets despite having Salesforce?</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon"><i class="fas fa-hourglass-half"></i></div>
+                    <p>Does your Salesforce setup slow teams down instead of helping them close faster?</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon"><i class="fas fa-cogs"></i></div>
+                    <p>Are manual processes eating up time that should be automated?</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon"><i class="fas fa-database"></i></div>
+                    <p>Is poor data quality making reports unreliable and decisions harder?</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon"><i class="fas fa-unlink"></i></div>
+                    <p>Are disconnected tools creating duplicate work and missed opportunities?</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <p>Has your Salesforce org become too complex to change safely?</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon"><i class="fas fa-user-times"></i></div>
+                    <p>Are users frustrated, under-trained, or avoiding Salesforce altogether?</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <p>Are you paying for features and licenses you don't actually use?</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon"><i class="fas fa-map"></i></div>
+                    <p>Do you lack a clear Salesforce roadmap aligned with business growth?</p>
                 </div>
             </div>
         </div>
@@ -1410,8 +1601,7 @@
             </div>
         </div>
     </section>
-
- <!-- HERO -->
+ <!--
     <section class="hero" id="home">
         <div class="hero-bg">
             <img src="Main1.png" alt="Background">
@@ -1419,12 +1609,9 @@
         <div class="hero-gradient"></div>
         <div class="container">
             <div class="hero-content">
-                
-                </div>
             </div>
         </div>
-    </section>
-
+    </section>-->
 
     <!-- ABOUT -->
     <section class="about" id="about">
@@ -1477,62 +1664,6 @@
         </div>
     </section>
 
-    <!-- PORTFOLIO -->
-   <!--- <section class="portfolio" id="portfolio">
-   
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Our Work</span>
-                <h2 class="section-title">Recent Projects</h2>
-                <p class="section-desc">Check out some of our recent successful projects</p>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600" alt="Project">
-                    <div class="portfolio-overlay">
-                        <h3>E-commerce Platform</h3>
-                        <p>Web Development</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600" alt="Project">
-                    <div class="portfolio-overlay">
-                        <h3>Analytics Dashboard</h3>
-                        <p>Data Analytics</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600" alt="Project">
-                    <div class="portfolio-overlay">
-                        <h3>Cloud Migration</h3>
-                        <p>Cloud Solutions</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600" alt="Project">
-                    <div class="portfolio-overlay">
-                        <h3>Mobile Banking App</h3>
-                        <p>Mobile Development</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600" alt="Project">
-                    <div class="portfolio-overlay">
-                        <h3>Security Audit</h3>
-                        <p>Cybersecurity</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600" alt="Project">
-                    <div class="portfolio-overlay">
-                        <h3>IT Infrastructure</h3>
-                        <p>IT Support</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
--->
     <!-- CONTACT -->
     <section class="contact" id="contact">
         <div class="container">
@@ -1623,7 +1754,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <img src="logo.png" alt="BridgeX Cloud">
+                    <img src="favicon.png" alt="BridgeX Cloud">
                     <p>A logical bridge to your business success. Empowering businesses with innovative technology solutions.</p>
                     <div class="footer-social">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -1857,7 +1988,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.service-card, .industry-card, .portfolio-item').forEach(el => {
+        document.querySelectorAll('.service-card, .industry-card, .portfolio-item, .challenge-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease';
