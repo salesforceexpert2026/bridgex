@@ -1719,41 +1719,62 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" placeholder="Your name" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" placeholder="Your email" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Service</label>
-                            <select>
-                                <option>Select a service</option>
-                                <option>Salesforce Implementation</option>
-                                <option>Salesforce Consulting</option>
-                                <option>Managed Services</option>
-                                <option>Website Development</option>
-                                <option>App Development</option>
-                                <option>End To End Digital Transformation</option>
-                                <option>Business Consulting</option>
-                                <option>Staff Augmentation</option>
-                                <option>Digital Marketing</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Message</label>
-                            <textarea placeholder="Your message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                    </form>
-                </div>
+				<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+<div class="contact-form">
+  <form
+    action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8"
+    method="POST">
+
+    <!-- Salesforce Required Hidden Fields -->
+    <input type="hidden" name="oid" value="00Dfj00000F0N8r">
+    <input type="hidden" name="retURL" value="https://bridgexcloud.com/">
+    <input type="hidden" name="lead_source" value="Web">
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Name</label>
+        <!-- Salesforce requires Last Name -->
+        <input type="text" name="last_name" placeholder="Your name" required>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Your email" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Service</label>
+      <!-- Mapped to Industry -->
+      <select name="industry" required>
+        <option value="">Select a service</option>
+        <option value="Salesforce Implementation">Salesforce Implementation</option>
+        <option value="Salesforce Consulting">Salesforce Consulting</option>
+        <option value="Managed Services">Managed Services</option>
+        <option value="Website Development">Website Development</option>
+        <option value="App Development">App Development</option>
+        <option value="End To End Digital Transformation">End To End Digital Transformation</option>
+        <option value="Business Consulting">Business Consulting</option>
+        <option value="Staff Augmentation">Staff Augmentation</option>
+        <option value="Digital Marketing">Digital Marketing</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Message</label>
+      <!-- Optional: map to Description -->
+      <textarea name="description" placeholder="Your message"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">
+      <i class="fas fa-paper-plane"></i> Send Message
+    </button>
+
+  </form>
+</div>
+
+                 </div>
             </div>
         </div>
     </section>
