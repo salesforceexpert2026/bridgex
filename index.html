@@ -823,7 +823,21 @@
 
         /* ========== CONTACT ========== */
         .contact {
-            background: var(--slate-50);
+            background: url('Main.png') center center / cover no-repeat;
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(248, 250, 252, 0.95);
+            z-index: 1;
+        }
+
+        .contact .container {
+            position: relative;
+            z-index: 2;
         }
 
         .contact-grid {
@@ -976,7 +990,6 @@
 
         .footer-brand img {
             height: 40px;
-            filter: brightness(0) invert(1);
             margin-bottom: 16px;
         }
 
@@ -1528,59 +1541,59 @@
                     <p>End-to-end Salesforce implementation services tailored to your business processes.</p>
                     <span class="service-link">Learn More <i class="fas fa-arrow-right"></i></span>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="openModal('consultingModal')">
                     <div class="service-icon"><i class="fas fa-users-cog"></i></div>
                     <h3>Salesforce Consulting</h3>
                     <p>Expert consulting to optimize your Salesforce platform and maximize your ROI.</p>
-                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <span class="service-link">Learn More <i class="fas fa-arrow-right"></i></span>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="openModal('managedModal')">
                     <div class="service-icon"><i class="fas fa-cogs"></i></div>
                     <h3>Managed Services</h3>
                     <p>Ongoing support and maintenance to keep your Salesforce org at peak performance.</p>
-                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <span class="service-link">Learn More <i class="fas fa-arrow-right"></i></span>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="openModal('trainingModal')">
                     <div class="service-icon"><i class="fas fa-chalkboard-teacher"></i></div>
                     <h3>Salesforce Training</h3>
                     <p>Comprehensive training programs to empower your team with Salesforce expertise.</p>
-                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <span class="service-link">Learn More <i class="fas fa-arrow-right"></i></span>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="openModal('webdevModal')">
                     <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
                     <h3>Website Development</h3>
                     <p>Custom websites built with modern technologies for optimal performance.</p>
-                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <span class="service-link">Learn More <i class="fas fa-arrow-right"></i></span>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="openModal('appdevModal')">
                     <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
                     <h3>App Development</h3>
                     <p>Native and cross-platform mobile applications that engage customers.</p>
-                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <span class="service-link">Learn More <i class="fas fa-arrow-right"></i></span>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="openModal('biModal')">
                     <div class="service-icon"><i class="fas fa-chart-pie"></i></div>
                     <h3>BI Services</h3>
                     <p>Transform your data into actionable insights with business intelligence.</p>
-                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <span class="service-link">Learn More <i class="fas fa-arrow-right"></i></span>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="openModal('healthcheckModal')">
                     <div class="service-icon"><i class="fas fa-handshake"></i></div>
                     <h3>Salesforce Health Check</h3>
                     <p>Strategic business consulting to help you achieve organizational goals.</p>
-                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <span class="service-link">Learn More <i class="fas fa-arrow-right"></i></span>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="openModal('staffModal')">
                     <div class="service-icon"><i class="fas fa-user-plus"></i></div>
                     <h3>Staff Augmentation</h3>
                     <p>Flexible staffing solutions to scale your team with skilled professionals.</p>
-                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <span class="service-link">Learn More <i class="fas fa-arrow-right"></i></span>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="openModal('marketingModal')">
                     <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
                     <h3>Digital Marketing</h3>
                     <p>Comprehensive digital marketing strategies to boost your online presence.</p>
-                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <span class="service-link">Learn More <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
         </div>
@@ -1703,7 +1716,7 @@
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.linkedin.com/company/bridge-x-cloud-infotech/posts/?feedView=all" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
@@ -1778,7 +1791,7 @@
                     <div class="footer-social">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.linkedin.com/company/bridge-x-cloud-infotech/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
@@ -1877,6 +1890,564 @@
             </div>
             <div class="modal-footer">
                 <a href="#contact" class="btn btn-primary modal-cta" onclick="closeModal('sfModal')">Get Started Today</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SALESFORCE CONSULTING MODAL -->
+    <div class="modal" id="consultingModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('consultingModal')">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon"><i class="fas fa-users-cog"></i></div>
+                <h2>Salesforce Consulting</h2>
+                <p class="modal-subtitle">Expert guidance to maximize your Salesforce ROI</p>
+            </div>
+            <div class="modal-body">
+                <h3><i class="fas fa-gem"></i> What We Deliver</h3>
+                <div class="modal-features">
+                    <div class="modal-feature">
+                        <i class="fas fa-search-dollar"></i>
+                        <div>
+                            <h4>ROI Assessment & Strategy</h4>
+                            <p>Analyze your current setup and identify opportunities for improvement.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-chart-line"></i>
+                        <div>
+                            <h4>Performance Optimization</h4>
+                            <p>Fine-tune your Salesforce org for maximum efficiency and user adoption.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-puzzle-piece"></i>
+                        <div>
+                            <h4>Process Improvement</h4>
+                            <p>Streamline workflows and eliminate bottlenecks in your sales process.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <h4>Security & Compliance</h4>
+                            <p>Ensure your Salesforce org meets industry standards and best practices.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-road"></i>
+                        <div>
+                            <h4>Roadmap Planning</h4>
+                            <p>Develop a strategic plan aligned with your business objectives.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <h4>Best Practices Training</h4>
+                            <p>Educate your team on Salesforce best practices and governance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#contact" class="btn btn-primary modal-cta" onclick="closeModal('consultingModal')">Get Started Today</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MANAGED SERVICES MODAL -->
+    <div class="modal" id="managedModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('managedModal')">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon"><i class="fas fa-cogs"></i></div>
+                <h2>Managed Services</h2>
+                <p class="modal-subtitle">Ongoing support to keep your Salesforce running smoothly</p>
+            </div>
+            <div class="modal-body">
+                <h3><i class="fas fa-gem"></i> What We Deliver</h3>
+                <div class="modal-features">
+                    <div class="modal-feature">
+                        <i class="fas fa-headset"></i>
+                        <div>
+                            <h4>24/7 Support</h4>
+                            <p>Round-the-clock assistance for any Salesforce issues or questions.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-wrench"></i>
+                        <div>
+                            <h4>Proactive Maintenance</h4>
+                            <p>Regular health checks and optimization to prevent issues.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-sync-alt"></i>
+                        <div>
+                            <h4>Release Management</h4>
+                            <p>Stay current with Salesforce updates and new features.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-bug"></i>
+                        <div>
+                            <h4>Bug Fixes & Troubleshooting</h4>
+                            <p>Quick resolution of technical issues and system errors.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <h4>User Management</h4>
+                            <p>Handle user provisioning, permissions, and access control.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-chart-bar"></i>
+                        <div>
+                            <h4>Performance Monitoring</h4>
+                            <p>Track system performance and provide regular reports.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#contact" class="btn btn-primary modal-cta" onclick="closeModal('managedModal')">Get Started Today</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SALESFORCE TRAINING MODAL -->
+    <div class="modal" id="trainingModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('trainingModal')">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                <h2>Salesforce Training</h2>
+                <p class="modal-subtitle">Empower your team with Salesforce expertise</p>
+            </div>
+            <div class="modal-body">
+                <h3><i class="fas fa-gem"></i> What We Deliver</h3>
+                <div class="modal-features">
+                    <div class="modal-feature">
+                        <i class="fas fa-user-graduate"></i>
+                        <div>
+                            <h4>End User Training</h4>
+                            <p>Comprehensive training for sales, service, and marketing teams.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-code"></i>
+                        <div>
+                            <h4>Admin & Developer Training</h4>
+                            <p>Advanced training for administrators and developers.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-certificate"></i>
+                        <div>
+                            <h4>Certification Preparation</h4>
+                            <p>Prepare your team for Salesforce certification exams.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-laptop"></i>
+                        <div>
+                            <h4>Hands-on Workshops</h4>
+                            <p>Interactive sessions with real-world scenarios and exercises.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-book"></i>
+                        <div>
+                            <h4>Custom Training Materials</h4>
+                            <p>Tailored documentation and guides for your specific setup.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-video"></i>
+                        <div>
+                            <h4>On-demand Learning</h4>
+                            <p>Video tutorials and resources for continuous learning.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#contact" class="btn btn-primary modal-cta" onclick="closeModal('trainingModal')">Get Started Today</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- WEBSITE DEVELOPMENT MODAL -->
+    <div class="modal" id="webdevModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('webdevModal')">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon"><i class="fas fa-laptop-code"></i></div>
+                <h2>Website Development</h2>
+                <p class="modal-subtitle">Modern, responsive websites that drive results</p>
+            </div>
+            <div class="modal-body">
+                <h3><i class="fas fa-gem"></i> What We Deliver</h3>
+                <div class="modal-features">
+                    <div class="modal-feature">
+                        <i class="fas fa-mobile-alt"></i>
+                        <div>
+                            <h4>Responsive Design</h4>
+                            <p>Websites that look great on all devices and screen sizes.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-shopping-cart"></i>
+                        <div>
+                            <h4>E-commerce Solutions</h4>
+                            <p>Full-featured online stores with secure payment integration.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <div>
+                            <h4>Performance Optimization</h4>
+                            <p>Fast-loading websites optimized for speed and SEO.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-palette"></i>
+                        <div>
+                            <h4>Custom UI/UX Design</h4>
+                            <p>Beautiful, intuitive interfaces that enhance user experience.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-cog"></i>
+                        <div>
+                            <h4>CMS Integration</h4>
+                            <p>Easy-to-manage content with WordPress, Drupal, or custom CMS.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-lock"></i>
+                        <div>
+                            <h4>Security & Compliance</h4>
+                            <p>Secure websites with SSL, data protection, and GDPR compliance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#contact" class="btn btn-primary modal-cta" onclick="closeModal('webdevModal')">Get Started Today</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- APP DEVELOPMENT MODAL -->
+    <div class="modal" id="appdevModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('appdevModal')">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h2>App Development</h2>
+                <p class="modal-subtitle">Native and cross-platform mobile applications</p>
+            </div>
+            <div class="modal-body">
+                <h3><i class="fas fa-gem"></i> What We Deliver</h3>
+                <div class="modal-features">
+                    <div class="modal-feature">
+                        <i class="fab fa-apple"></i>
+                        <div>
+                            <h4>iOS Development</h4>
+                            <p>Native iOS apps for iPhone and iPad using Swift and SwiftUI.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fab fa-android"></i>
+                        <div>
+                            <h4>Android Development</h4>
+                            <p>Native Android apps using Kotlin and Jetpack Compose.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-layer-group"></i>
+                        <div>
+                            <h4>Cross-Platform Apps</h4>
+                            <p>Build once, deploy everywhere with React Native or Flutter.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-paint-brush"></i>
+                        <div>
+                            <h4>UI/UX Design</h4>
+                            <p>Beautiful, intuitive interfaces following platform guidelines.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-cloud"></i>
+                        <div>
+                            <h4>Backend Integration</h4>
+                            <p>Connect to APIs, databases, and cloud services seamlessly.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-rocket"></i>
+                        <div>
+                            <h4>App Store Deployment</h4>
+                            <p>Complete support for publishing to App Store and Play Store.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#contact" class="btn btn-primary modal-cta" onclick="closeModal('appdevModal')">Get Started Today</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- BI SERVICES MODAL -->
+    <div class="modal" id="biModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('biModal')">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon"><i class="fas fa-chart-pie"></i></div>
+                <h2>BI Services</h2>
+                <p class="modal-subtitle">Transform data into actionable insights</p>
+            </div>
+            <div class="modal-body">
+                <h3><i class="fas fa-gem"></i> What We Deliver</h3>
+                <div class="modal-features">
+                    <div class="modal-feature">
+                        <i class="fas fa-chart-line"></i>
+                        <div>
+                            <h4>Data Visualization</h4>
+                            <p>Interactive dashboards and reports using Tableau, Power BI, or Salesforce.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-database"></i>
+                        <div>
+                            <h4>Data Warehousing</h4>
+                            <p>Centralized data storage for better analysis and reporting.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-project-diagram"></i>
+                        <div>
+                            <h4>ETL Development</h4>
+                            <p>Extract, transform, and load data from multiple sources.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-brain"></i>
+                        <div>
+                            <h4>Predictive Analytics</h4>
+                            <p>AI-powered insights to forecast trends and opportunities.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-file-alt"></i>
+                        <div>
+                            <h4>Custom Reports</h4>
+                            <p>Tailored reporting solutions for your specific business needs.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <h4>Self-Service Analytics</h4>
+                            <p>Empower users to create their own reports and dashboards.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#contact" class="btn btn-primary modal-cta" onclick="closeModal('biModal')">Get Started Today</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SALESFORCE HEALTH CHECK MODAL -->
+    <div class="modal" id="healthcheckModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('healthcheckModal')">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon"><i class="fas fa-heartbeat"></i></div>
+                <h2>Salesforce Health Check</h2>
+                <p class="modal-subtitle">Comprehensive assessment of your Salesforce org</p>
+            </div>
+            <div class="modal-body">
+                <h3><i class="fas fa-gem"></i> What We Deliver</h3>
+                <div class="modal-features">
+                    <div class="modal-feature">
+                        <i class="fas fa-stethoscope"></i>
+                        <div>
+                            <h4>Technical Audit</h4>
+                            <p>In-depth review of your Salesforce configuration and customizations.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <h4>Security Assessment</h4>
+                            <p>Identify security vulnerabilities and recommend best practices.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <div>
+                            <h4>Performance Analysis</h4>
+                            <p>Evaluate system performance and identify optimization opportunities.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-user-check"></i>
+                        <div>
+                            <h4>User Adoption Review</h4>
+                            <p>Assess how effectively your team is using Salesforce.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-clipboard-check"></i>
+                        <div>
+                            <h4>Compliance Check</h4>
+                            <p>Ensure your org meets industry standards and regulations.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-list-ul"></i>
+                        <div>
+                            <h4>Actionable Recommendations</h4>
+                            <p>Detailed report with prioritized improvements and roadmap.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#contact" class="btn btn-primary modal-cta" onclick="closeModal('healthcheckModal')">Get Started Today</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- STAFF AUGMENTATION MODAL -->
+    <div class="modal" id="staffModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('staffModal')">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon"><i class="fas fa-user-plus"></i></div>
+                <h2>Staff Augmentation</h2>
+                <p class="modal-subtitle">Scale your team with skilled professionals</p>
+            </div>
+            <div class="modal-body">
+                <h3><i class="fas fa-gem"></i> What We Deliver</h3>
+                <div class="modal-features">
+                    <div class="modal-feature">
+                        <i class="fas fa-user-tie"></i>
+                        <div>
+                            <h4>Salesforce Experts</h4>
+                            <p>Certified consultants, developers, and administrators on demand.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-users-cog"></i>
+                        <div>
+                            <h4>Technical Resources</h4>
+                            <p>Developers, architects, and engineers for your projects.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Flexible Engagement</h4>
+                            <p>Short-term or long-term resources based on your needs.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-search"></i>
+                        <div>
+                            <h4>Pre-vetted Talent</h4>
+                            <p>Thoroughly screened professionals with proven expertise.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-rocket"></i>
+                        <div>
+                            <h4>Quick Onboarding</h4>
+                            <p>Resources ready to contribute from day one.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-dollar-sign"></i>
+                        <div>
+                            <h4>Cost-Effective</h4>
+                            <p>Access to expertise without the overhead of full-time employees.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#contact" class="btn btn-primary modal-cta" onclick="closeModal('staffModal')">Get Started Today</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIGITAL MARKETING MODAL -->
+    <div class="modal" id="marketingModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('marketingModal')">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon"><i class="fas fa-bullhorn"></i></div>
+                <h2>Digital Marketing</h2>
+                <p class="modal-subtitle">Drive growth with data-driven marketing strategies</p>
+            </div>
+            <div class="modal-body">
+                <h3><i class="fas fa-gem"></i> What We Deliver</h3>
+                <div class="modal-features">
+                    <div class="modal-feature">
+                        <i class="fas fa-search"></i>
+                        <div>
+                            <h4>SEO Services</h4>
+                            <p>Improve your search rankings and organic visibility.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-ad"></i>
+                        <div>
+                            <h4>PPC Advertising</h4>
+                            <p>Targeted paid campaigns on Google, Facebook, and LinkedIn.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-share-alt"></i>
+                        <div>
+                            <h4>Social Media Marketing</h4>
+                            <p>Engage your audience across all social platforms.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email Marketing</h4>
+                            <p>Nurture leads with personalized email campaigns.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-pen-fancy"></i>
+                        <div>
+                            <h4>Content Marketing</h4>
+                            <p>Create compelling content that drives engagement and conversions.</p>
+                        </div>
+                    </div>
+                    <div class="modal-feature">
+                        <i class="fas fa-chart-line"></i>
+                        <div>
+                            <h4>Analytics & Reporting</h4>
+                            <p>Track performance and optimize campaigns for better ROI.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#contact" class="btn btn-primary modal-cta" onclick="closeModal('marketingModal')">Get Started Today</a>
             </div>
         </div>
     </div>
