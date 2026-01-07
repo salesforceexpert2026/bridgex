@@ -831,7 +831,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(248, 250, 252, 0.95);
+            background: rgba(248, 250, 252, 0.75);
             z-index: 1;
         }
 
@@ -1702,7 +1702,7 @@
                             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                             <div>
                                 <h4>Email</h4>
-                                <p>Sales@bridgexcloud.com</p>
+                                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b2e1d3ded7c1f2d0c0dbd6d5d7cad1deddc7d69cd1dddf">[email&#160;protected]</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -2453,7 +2453,7 @@
     </div>
 
     <!-- JAVASCRIPT -->
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Elements
         const navbar = document.getElementById('navbar');
         const mobileToggle = document.getElementById('mobileToggle');
@@ -2602,14 +2602,3 @@
                 closeModal('sfModal');
             }
         });
-        
-        // Close modal on ESC key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal('sfModal');
-            }
-        });
-    </script>
-
-</body>
-</html>
