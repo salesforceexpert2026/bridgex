@@ -7,17 +7,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="icon" type="image/png" href="logo.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"BridgeX Cloud Tech","url":"https://bridgexcloud.com"}</script>
 <style>
 /* ═══════════════════════════════════════
    CORE VARIABLES & RESET
 ═══════════════════════════════════════ */
 :root{
-  --void:#0b1220;
-  --deep:#0f1a2e;
-  --abyss:#0d1628;
-  --glass:rgba(255,255,255,.06);
-  --glass2:rgba(255,255,255,.10);
+  --void:#020408;
+  --deep:#04090f;
+  --abyss:#060d18;
+  --glass:rgba(255,255,255,.04);
+  --glass2:rgba(255,255,255,.07);
   --rim:rgba(0,245,255,.15);
   --rim2:rgba(59,130,246,.2);
   --cyan:#00f5ff;
@@ -40,50 +39,30 @@ img{max-width:100%;display:block;}
 /* CUSTOM CURSOR */
 #cursor{width:14px;height:14px;background:var(--cyan);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;mix-blend-mode:screen;transition:transform .15s ease;box-shadow:0 0 20px var(--cyan),0 0 40px rgba(0,245,255,.4);}
 #cursor-ring{width:40px;height:40px;border:1px solid rgba(0,245,255,.4);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transition:all .35s ease;}
-body:hover #cursor{transform:scale(1);}
 
 /* SCAN-LINE OVERLAY */
-body::before{
-  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px);
-}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px);}
 
 /* GRID BG */
-.grid-bg{
-  position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:linear-gradient(rgba(0,245,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,255,.025) 1px,transparent 1px);
-  background-size:60px 60px;
-}
+.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(0,245,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,255,.025) 1px,transparent 1px);background-size:60px 60px;}
 
 /* ═══════════════════════════════════════
    NAVBAR
 ═══════════════════════════════════════ */
 .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all .4s;}
-.navbar.scrolled{background:rgba(11,18,32,.95);backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,245,255,.1);}
+.navbar.scrolled{background:rgba(2,4,8,.92);backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,245,255,.08);}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:76px;}
 .logo img{height:155px;}
 .nav-links{display:flex;align-items:center;gap:4px;}
 .nav-links>a,.nav-drop>a{padding:8px 16px;font-family:'Oxanium',sans-serif;font-size:14px;font-weight:500;color:var(--dim);border-radius:8px;transition:all .25s;letter-spacing:.5px;}
 .nav-links>a:hover,.nav-drop>a:hover{color:var(--cyan);background:rgba(0,245,255,.06);}
-.nav-links .cta{
-  background:linear-gradient(135deg,rgba(0,245,255,.15),rgba(59,130,246,.15));
-  border:1px solid rgba(0,245,255,.3);color:var(--cyan)!important;
-  padding:10px 26px;border-radius:50px;font-weight:600;margin-left:8px;
-  box-shadow:0 0 20px rgba(0,245,255,.1);
-}
+.nav-links .cta{background:linear-gradient(135deg,rgba(0,245,255,.15),rgba(59,130,246,.15));border:1px solid rgba(0,245,255,.3);color:var(--cyan)!important;padding:10px 26px;border-radius:50px;font-weight:600;margin-left:8px;box-shadow:0 0 20px rgba(0,245,255,.1);}
 .nav-links .cta:hover{background:rgba(0,245,255,.2);box-shadow:0 0 30px rgba(0,245,255,.25);transform:translateY(-1px);}
 .nav-drop{position:relative;}
 .nav-drop>a{display:flex;align-items:center;gap:5px;cursor:pointer;}
 .nav-drop>a i{font-size:9px;transition:transform .3s;}
 .nav-drop.open>a i{transform:rotate(180deg);}
-.drop-panel{
-  position:fixed;top:76px;left:50%;transform:translateX(-50%) translateY(-10px);
-  background:rgba(11,18,32,.98);backdrop-filter:blur(30px);
-  border:1px solid rgba(0,245,255,.1);border-top:2px solid var(--cyan);
-  border-radius:0 0 20px 20px;width:86%;max-width:960px;
-  padding:28px 0;opacity:0;visibility:hidden;transition:all .3s;z-index:999;
-  box-shadow:0 30px 60px rgba(0,0,0,.8),0 0 40px rgba(0,245,255,.05);
-}
+.drop-panel{position:fixed;top:76px;left:50%;transform:translateX(-50%) translateY(-10px);background:rgba(4,9,15,.97);backdrop-filter:blur(30px);border:1px solid rgba(0,245,255,.1);border-top:2px solid var(--cyan);border-radius:0 0 20px 20px;width:86%;max-width:960px;padding:28px 0;opacity:0;visibility:hidden;transition:all .3s;z-index:999;box-shadow:0 30px 60px rgba(0,0,0,.8),0 0 40px rgba(0,245,255,.05);}
 .drop-panel.active{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
 .drop-inner{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding:0 32px;}
 .drop-col h5{font-family:'Oxanium',sans-serif;font-size:10px;font-weight:700;color:var(--cyan);text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(0,245,255,.1);}
@@ -101,47 +80,27 @@ body::before{
 #hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.18;}
 .hero-grad{position:absolute;inset:0;z-index:2;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(0,245,255,.06) 0%,transparent 70%),radial-gradient(ellipse 50% 80% at 80% 30%,rgba(99,102,241,.08) 0%,transparent 70%),linear-gradient(180deg,var(--void) 0%,transparent 30%,transparent 70%,var(--void) 100%);}
 .hero-content{position:relative;z-index:3;max-width:900px;padding:160px 0 120px;}
-/* Eyebrow */
 .eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 20px;border-radius:50px;border:1px solid rgba(0,245,255,.25);background:rgba(0,245,255,.06);margin-bottom:32px;backdrop-filter:blur(10px);}
 .eyebrow-dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);animation:blink 2s infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .eyebrow span{font-family:'Oxanium',sans-serif;font-size:12.5px;font-weight:600;color:var(--cyan);letter-spacing:1.5px;text-transform:uppercase;}
-/* Title */
 .hero-title{font-family:'Oxanium',sans-serif;font-size:clamp(44px,6vw,82px);font-weight:800;line-height:1.05;letter-spacing:-2px;margin-bottom:24px;}
 .hero-title .static{color:var(--white);}
-.hero-title .glow-text{
-  background:linear-gradient(90deg,var(--cyan),#7dd3fc,var(--indigo));
-  background-size:200% auto;
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  animation:gradShift 4s linear infinite;
-}
+.hero-title .glow-text{background:linear-gradient(90deg,var(--cyan),#7dd3fc,var(--indigo));background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradShift 4s linear infinite;}
 @keyframes gradShift{0%{background-position:0% center}100%{background-position:200% center}}
-/* typewriter */
 .typewriter{display:inline-block;border-right:3px solid var(--cyan);padding-right:4px;animation:caret .7s step-end infinite;}
 @keyframes caret{0%,100%{border-color:var(--cyan)}50%{border-color:transparent}}
 .hero-sub{font-size:18px;color:var(--dim);max-width:600px;line-height:1.8;margin-bottom:44px;}
-/* CTAs */
 .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:64px;}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 36px;font-family:'Oxanium',sans-serif;font-size:15px;font-weight:600;border-radius:50px;cursor:pointer;border:none;transition:all .3s;letter-spacing:.5px;}
-.btn-ai{
-  background:linear-gradient(135deg,var(--cyan),var(--blue));
-  color:var(--void);box-shadow:0 0 30px rgba(0,245,255,.3),0 8px 32px rgba(0,0,0,.4);
-}
+.btn-ai{background:linear-gradient(135deg,var(--cyan),var(--blue));color:var(--void);box-shadow:0 0 30px rgba(0,245,255,.3),0 8px 32px rgba(0,0,0,.4);}
 .btn-ai:hover{transform:translateY(-3px);box-shadow:0 0 50px rgba(0,245,255,.5),0 12px 40px rgba(0,0,0,.5);}
 .btn-ghost{background:var(--glass);color:var(--white);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(10px);}
 .btn-ghost:hover{background:var(--glass2);border-color:rgba(0,245,255,.3);color:var(--cyan);}
-/* Stats */
 .hero-stats{display:flex;gap:56px;padding-top:40px;border-top:1px solid rgba(255,255,255,.07);}
 .stat-val{font-family:'Oxanium',sans-serif;font-size:48px;font-weight:800;line-height:1;background:linear-gradient(90deg,var(--cyan),#7dd3fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .stat-lbl{font-size:13px;color:var(--muted);margin-top:6px;letter-spacing:.5px;}
-/* Float badge */
-.float-badge{
-  position:absolute;right:5%;top:30%;z-index:4;
-  background:rgba(4,9,15,.85);backdrop-filter:blur(20px);
-  border:1px solid rgba(0,245,255,.2);border-radius:16px;padding:20px 24px;
-  animation:levitate 5s ease-in-out infinite;
-  box-shadow:0 0 40px rgba(0,245,255,.08),0 20px 40px rgba(0,0,0,.5);
-}
+.float-badge{position:absolute;right:5%;top:30%;z-index:4;background:rgba(4,9,15,.85);backdrop-filter:blur(20px);border:1px solid rgba(0,245,255,.2);border-radius:16px;padding:20px 24px;animation:levitate 5s ease-in-out infinite;box-shadow:0 0 40px rgba(0,245,255,.08),0 20px 40px rgba(0,0,0,.5);}
 @keyframes levitate{0%,100%{transform:translateY(0) rotate(0deg)}33%{transform:translateY(-12px) rotate(.5deg)}66%{transform:translateY(-6px) rotate(-.3deg)}}
 .fb-chip{display:flex;align-items:center;gap:6px;margin-bottom:10px;}
 .fb-dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);}
@@ -159,15 +118,13 @@ section{padding:100px 0;position:relative;z-index:1;}
 .sec-title .c{background:linear-gradient(90deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .sec-desc{font-size:17px;color:var(--dim);max-width:580px;margin:0 auto;line-height:1.75;}
 .sec-hd{text-align:center;margin-bottom:68px;}
-/* Glass card base */
 .glass-card{background:var(--glass);border:1px solid var(--rim);border-radius:var(--r20);backdrop-filter:blur(14px);transition:all .35s;}
 .glass-card:hover{background:var(--glass2);border-color:rgba(0,245,255,.3);box-shadow:0 0 30px rgba(0,245,255,.08),0 20px 40px rgba(0,0,0,.4);}
-/* Reveal */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
 .reveal.vis{opacity:1;transform:translateY(0);}
 
 /* ═══════════════════════════════════════
-   SHOWCASE (browser slider)
+   SHOWCASE
 ═══════════════════════════════════════ */
 .showcase{padding:100px 0 80px;overflow:hidden;background:linear-gradient(180deg,var(--void) 0%,var(--deep) 100%);}
 .showcase-globe{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:0;overflow:hidden;}
@@ -182,13 +139,13 @@ section{padding:100px 0;position:relative;z-index:1;}
 .sc-track{display:flex;gap:24px;animation:scScroll 34s linear infinite;padding:10px 0 30px;}
 .sc-track:hover{animation-play-state:paused;}
 @keyframes scScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.sc-card{flex:0 0 400px;border-radius:16px;overflow:hidden;border:1px solid rgba(0,245,255,.12);box-shadow:0 20px 50px rgba(0,0,0,.6);transition:transform .4s,box-shadow .4s;cursor:pointer;background:#0d1628;}
+.sc-card{flex:0 0 400px;border-radius:16px;overflow:hidden;border:1px solid rgba(0,245,255,.12);box-shadow:0 20px 50px rgba(0,0,0,.6);transition:transform .4s,box-shadow .4s;cursor:pointer;background:#060d18;}
 .sc-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 0 40px rgba(0,245,255,.15),0 30px 60px rgba(0,0,0,.7);}
-.sc-bar{background:#131f35;padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(0,245,255,.07);}
+.sc-bar{background:#0a1525;padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(0,245,255,.07);}
 .sc-dots{display:flex;gap:5px;}
 .sc-dot{width:10px;height:10px;border-radius:50%;}
 .sc-dot.r{background:#ff5f57;}.sc-dot.y{background:#ffbd2e;}.sc-dot.g{background:#28c840;}
-.sc-url{flex:1;background:rgba(255,255,255,.05);border-radius:6px;padding:4px 12px;font-size:11px;color:rgba(255,255,255,.35);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'Nunito',sans-serif;}
+.sc-url{flex:1;background:rgba(255,255,255,.05);border-radius:6px;padding:4px 12px;font-size:11px;color:rgba(255,255,255,.35);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .sc-screen{height:230px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
 .sc-screen img{width:100%;height:100%;object-fit:cover;}
 .sc-s1{background:radial-gradient(ellipse at 30% 50%,#0a3d8f,#020b2a);}
@@ -205,12 +162,12 @@ section{padding:100px 0;position:relative;z-index:1;}
 .sc-pi i{font-size:24px;color:var(--cyan);}
 .sc-pt{font-family:'Oxanium',sans-serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:5px;}
 .sc-ps{font-size:12px;color:rgba(255,255,255,.6);}
-.sc-lbl{background:#131f35;padding:13px;font-family:'Oxanium',sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,.7);text-align:center;border-top:1px solid rgba(0,245,255,.07);}
+.sc-lbl{background:#0a1525;padding:13px;font-family:'Oxanium',sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,.7);text-align:center;border-top:1px solid rgba(0,245,255,.07);}
 
 /* ═══════════════════════════════════════
    CHALLENGES
 ═══════════════════════════════════════ */
-.challenges{background:linear-gradient(180deg,#0d1628 0%,#111e36 100%);padding:90px 0;}
+.challenges{background:linear-gradient(180deg,#020a14 0%,#030d1c 100%);padding:90px 0;}
 .ch-head{text-align:center;margin-bottom:56px;}
 .ch-head h2{font-family:'Oxanium',sans-serif;font-size:clamp(24px,3.2vw,42px);font-weight:800;color:var(--white);max-width:900px;margin:0 auto;line-height:1.35;letter-spacing:-.5px;}
 .ch-head h2 em{font-style:normal;background:linear-gradient(90deg,var(--cyan),#7dd3fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
@@ -224,7 +181,7 @@ section{padding:100px 0;position:relative;z-index:1;}
 .ch-card p{font-size:13px;color:rgba(255,255,255,.7);line-height:1.6;}
 
 /* ═══════════════════════════════════════
-   SERVICES (image card grid)
+   SERVICES
 ═══════════════════════════════════════ */
 .services{background:var(--void);}
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
@@ -234,7 +191,6 @@ section{padding:100px 0;position:relative;z-index:1;}
 .svc-card:hover img{transform:scale(1.1);opacity:.65;}
 .svc-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(2,4,8,.98) 0%,rgba(2,4,8,.5) 50%,rgba(0,0,0,.2) 100%);transition:background .4s;}
 .svc-card:hover .svc-shade{background:linear-gradient(to top,rgba(2,4,8,1) 0%,rgba(0,80,120,.4) 55%,rgba(0,245,255,.08) 100%);}
-/* glow border on hover */
 .svc-card::after{content:'';position:absolute;inset:0;border:1px solid rgba(0,245,255,.25);opacity:0;transition:opacity .35s;pointer-events:none;}
 .svc-card:hover::after{opacity:1;}
 .svc-info{position:absolute;bottom:0;left:0;right:0;padding:28px;}
@@ -246,18 +202,18 @@ section{padding:100px 0;position:relative;z-index:1;}
 .svc-card:hover .svc-arr{opacity:1;transform:translateY(0);}
 
 /* ═══════════════════════════════════════
-   CAPABILITY TICKER (pill scroll)
+   CAPABILITY TICKER
 ═══════════════════════════════════════ */
-.ticker{background:#0d1628;padding:70px 0;overflow:hidden;border-top:1px solid rgba(0,245,255,.07);border-bottom:1px solid rgba(0,245,255,.07);}
+.ticker{background:#020a14;padding:70px 0;overflow:hidden;border-top:1px solid rgba(0,245,255,.05);border-bottom:1px solid rgba(0,245,255,.05);}
 .ticker .sec-hd{margin-bottom:44px;}
 .tick-wrap{overflow:hidden;position:relative;}
 .tick-wrap::before,.tick-wrap::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;}
-.tick-wrap::before{left:0;background:linear-gradient(to right,#0d1628,transparent);}
-.tick-wrap::after{right:0;background:linear-gradient(to left,#0d1628,transparent);}
+.tick-wrap::before{left:0;background:linear-gradient(to right,#020a14,transparent);}
+.tick-wrap::after{right:0;background:linear-gradient(to left,#020a14,transparent);}
 .tick-track{display:flex;gap:14px;animation:tickScroll 24s linear infinite;}
 .tick-track:hover{animation-play-state:paused;}
 @keyframes tickScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.tick-pill{flex-shrink:0;display:flex;align-items:center;gap:10px;background:rgba(0,245,255,.04);border:1px solid rgba(0,245,255,.1);border-radius:50px;padding:12px 22px;white-space:nowrap;transition:all .3s;cursor:default;}
+.tick-pill{flex-shrink:0;display:flex;align-items:center;gap:10px;background:rgba(0,245,255,.04);border:1px solid rgba(0,245,255,.1);border-radius:50px;padding:12px 22px;white-space:nowrap;transition:all .3s;}
 .tick-pill:hover{background:rgba(0,245,255,.1);border-color:rgba(0,245,255,.35);box-shadow:0 0 20px rgba(0,245,255,.1);}
 .tp-ico{width:30px;height:30px;background:rgba(0,245,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;}
 .tp-ico i{font-size:13px;color:var(--cyan);}
@@ -269,7 +225,7 @@ section{padding:100px 0;position:relative;z-index:1;}
 ═══════════════════════════════════════ */
 .industries{background:var(--void);}
 .ind-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
-.ind-card{background:rgba(0,245,255,.03);border:1px solid rgba(0,245,255,.07);border-radius:16px;padding:26px 14px;text-align:center;transition:all .3s;cursor:default;}
+.ind-card{background:rgba(0,245,255,.03);border:1px solid rgba(0,245,255,.07);border-radius:16px;padding:26px 14px;text-align:center;transition:all .3s;}
 .ind-card:hover{background:rgba(0,245,255,.07);border-color:rgba(0,245,255,.25);transform:translateY(-5px);box-shadow:0 0 25px rgba(0,245,255,.06);}
 .ind-ico{width:56px;height:56px;background:linear-gradient(135deg,rgba(0,245,255,.12),rgba(59,130,246,.12));border:1px solid rgba(0,245,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
 .ind-ico i{font-size:22px;color:var(--cyan);}
@@ -282,7 +238,6 @@ section{padding:100px 0;position:relative;z-index:1;}
 .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
 .why-img-wrap{position:relative;}
 .why-img-wrap img{border-radius:20px;box-shadow:0 30px 80px rgba(0,0,0,.5);border:1px solid rgba(0,245,255,.08);}
-/* animated border */
 .why-img-wrap::before{content:'';position:absolute;inset:-2px;border-radius:22px;background:linear-gradient(135deg,rgba(0,245,255,.3),transparent,rgba(99,102,241,.3));z-index:-1;animation:borderGlow 4s linear infinite;}
 @keyframes borderGlow{0%,100%{opacity:.5}50%{opacity:1}}
 .why-float{position:absolute;bottom:-28px;right:-28px;background:linear-gradient(135deg,rgba(0,245,255,.15),rgba(59,130,246,.15));border:1px solid rgba(0,245,255,.3);backdrop-filter:blur(20px);color:var(--white);padding:24px 28px;border-radius:18px;text-align:center;box-shadow:0 0 30px rgba(0,245,255,.1),0 20px 40px rgba(0,0,0,.4);}
@@ -336,7 +291,6 @@ section{padding:100px 0;position:relative;z-index:1;}
 .soc-row{display:flex;gap:10px;}
 .soc-btn{width:42px;height:42px;background:rgba(0,245,255,.05);border:1px solid rgba(0,245,255,.12);border-radius:11px;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .3s;}
 .soc-btn:hover{background:rgba(0,245,255,.12);border-color:rgba(0,245,255,.35);color:var(--cyan);box-shadow:0 0 15px rgba(0,245,255,.1);}
-/* Form */
 .contact-form-box{background:rgba(0,245,255,.02);border:1px solid rgba(0,245,255,.1);border-radius:24px;padding:40px;backdrop-filter:blur(10px);}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .fg{margin-bottom:16px;}
@@ -351,7 +305,7 @@ section{padding:100px 0;position:relative;z-index:1;}
 /* ═══════════════════════════════════════
    FOOTER
 ═══════════════════════════════════════ */
-.footer{background:#090f1c;padding:80px 0 28px;border-top:1px solid rgba(0,245,255,.08);}
+.footer{background:#020408;padding:80px 0 28px;border-top:1px solid rgba(0,245,255,.06);}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:52px;margin-bottom:48px;}
 .footer-brand img{height:215px;margin-bottom:-50px;}
 .footer-brand p{color:var(--muted);font-size:14px;line-height:1.75;margin-bottom:22px;}
@@ -371,18 +325,14 @@ section{padding:100px 0;position:relative;z-index:1;}
 .nl-form button:hover{background:rgba(0,245,255,.25);box-shadow:0 0 15px rgba(0,245,255,.15);}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:24px;text-align:center;color:var(--muted);font-size:13px;}
 
-/* ═══════════════════════════════════════
-   BACK TO TOP
-═══════════════════════════════════════ */
+/* BACK TO TOP */
 .btt{position:fixed;bottom:30px;right:30px;width:50px;height:50px;background:rgba(0,245,255,.1);border:1px solid rgba(0,245,255,.3);border-radius:14px;color:var(--cyan);font-size:18px;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s;z-index:99;display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(0,245,255,.1);}
 .btt.show{opacity:1;visibility:visible;}
 .btt:hover{background:rgba(0,245,255,.2);box-shadow:0 0 30px rgba(0,245,255,.2);transform:translateY(-3px);}
 
-/* ═══════════════════════════════════════
-   MODALS
-═══════════════════════════════════════ */
+/* MODALS */
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(12px);z-index:2000;align-items:center;justify-content:center;padding:20px;}
-.modal-content{background:#0d1628;border:1px solid rgba(0,245,255,.15);border-radius:24px;max-width:700px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:mslide .3s ease;box-shadow:0 0 60px rgba(0,245,255,.08),0 30px 80px rgba(0,0,0,.8);}
+.modal-content{background:#04090f;border:1px solid rgba(0,245,255,.15);border-radius:24px;max-width:700px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:mslide .3s ease;box-shadow:0 0 60px rgba(0,245,255,.08),0 30px 80px rgba(0,0,0,.8);}
 @keyframes mslide{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
 .modal-close{position:absolute;top:18px;right:18px;width:36px;height:36px;background:rgba(0,245,255,.08);border:1px solid rgba(0,245,255,.15);border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--dim);transition:all .25s;}
 .modal-close:hover{background:rgba(0,245,255,.15);color:var(--cyan);}
@@ -401,9 +351,7 @@ section{padding:100px 0;position:relative;z-index:1;}
 .mf p{font-size:13px;color:var(--muted);}
 .modal-foot{padding:20px 36px 36px;text-align:center;}
 
-/* ═══════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════ */
+/* RESPONSIVE */
 @media(max-width:1024px){
   .svc-grid{grid-template-columns:repeat(2,1fr);}
   .svc-card.wide{grid-column:span 1;}
@@ -441,14 +389,11 @@ section{padding:100px 0;position:relative;z-index:1;}
 </style>
 </head>
 <body>
-
-<!-- CURSOR -->
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
-<!-- GRID -->
 <div class="grid-bg"></div>
 
-<!-- ══════════ NAVBAR ══════════ -->
+<!-- NAVBAR -->
 <nav class="navbar" id="navbar">
 <div class="container">
 <div class="nav-inner">
@@ -507,7 +452,7 @@ section{padding:100px 0;position:relative;z-index:1;}
 </div>
 </nav>
 
-<!-- ══════════ HERO ══════════ -->
+<!-- HERO -->
 <section class="hero" id="home">
 <canvas id="neural-canvas"></canvas>
 <video id="hero-video" autoplay muted loop playsinline><source src="hero-video.mp4" type="video/mp4"></video>
@@ -538,7 +483,7 @@ section{padding:100px 0;position:relative;z-index:1;}
 </div>
 </section>
 
-<!-- ══════════ SHOWCASE SLIDER ══════════ -->
+<!-- SHOWCASE -->
 <section class="showcase">
 <div class="showcase-globe">
   <svg viewBox="0 0 900 900" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -572,7 +517,6 @@ section{padding:100px 0;position:relative;z-index:1;}
     <div class="sc-card"><div class="sc-bar"><div class="sc-dots"><span class="sc-dot r"></span><span class="sc-dot y"></span><span class="sc-dot g"></span></div><div class="sc-url">tableau.com</div></div><div class="sc-screen sc-s6"><div class="sc-oc"><div class="sc-pi"><i class="fas fa-chart-pie"></i></div><div class="sc-pt">Tableau Analytics</div><div class="sc-ps">Business Intelligence</div></div></div><div class="sc-lbl">Tableau Implementation</div></div>
     <div class="sc-card"><div class="sc-bar"><div class="sc-dots"><span class="sc-dot r"></span><span class="sc-dot y"></span><span class="sc-dot g"></span></div><div class="sc-url">salesforce.com/products/health-cloud</div></div><div class="sc-screen sc-s3"><div class="sc-oc"><div class="sc-pi"><i class="fas fa-heartbeat"></i></div><div class="sc-pt">Health Cloud</div><div class="sc-ps">Patient &amp; Care Management</div></div></div><div class="sc-lbl">Health Cloud Implementation</div></div>
     <div class="sc-card"><div class="sc-bar"><div class="sc-dots"><span class="sc-dot r"></span><span class="sc-dot y"></span><span class="sc-dot g"></span></div><div class="sc-url">salesforce.com/products/experience-cloud</div></div><div class="sc-screen sc-s5"><div class="sc-oc"><div class="sc-pi"><i class="fas fa-users"></i></div><div class="sc-pt">Experience Cloud</div><div class="sc-ps">Portals &amp; Communities</div></div></div><div class="sc-lbl">Experience Cloud Portals</div></div>
-    <!-- duplicates -->
     <div class="sc-card"><div class="sc-bar"><div class="sc-dots"><span class="sc-dot r"></span><span class="sc-dot y"></span><span class="sc-dot g"></span></div><div class="sc-url">salesforce.com/products/sales-cloud</div></div><div class="sc-screen sc-s1"><div class="sc-oc"><div class="sc-pi"><i class="fab fa-salesforce"></i></div><div class="sc-pt">Sales Cloud</div><div class="sc-ps">CRM &amp; Pipeline Automation</div></div></div><div class="sc-lbl">Sales Cloud Implementation</div></div>
     <div class="sc-card"><div class="sc-bar"><div class="sc-dots"><span class="sc-dot r"></span><span class="sc-dot y"></span><span class="sc-dot g"></span></div><div class="sc-url">salesforce.com/agentforce</div></div><div class="sc-screen sc-s2"><div class="sc-oc"><div class="sc-pi"><i class="fas fa-robot"></i></div><div class="sc-pt">Agentforce AI</div><div class="sc-ps">AI-Powered Automation</div></div></div><div class="sc-lbl">Salesforce AI Services</div></div>
     <div class="sc-card"><div class="sc-bar"><div class="sc-dots"><span class="sc-dot r"></span><span class="sc-dot y"></span><span class="sc-dot g"></span></div><div class="sc-url">salesforce.com/products/marketing-cloud</div></div><div class="sc-screen sc-s4"><div class="sc-oc"><div class="sc-pi"><i class="fas fa-bullhorn"></i></div><div class="sc-pt">Marketing Cloud</div><div class="sc-ps">Personalized Customer Journeys</div></div></div><div class="sc-lbl">Marketing Cloud Setup</div></div>
@@ -583,7 +527,7 @@ section{padding:100px 0;position:relative;z-index:1;}
 </div>
 </section>
 
-<!-- ══════════ CHALLENGES ══════════ -->
+<!-- CHALLENGES -->
 <section class="challenges">
 <div class="container">
   <div class="ch-head reveal">
@@ -604,7 +548,7 @@ section{padding:100px 0;position:relative;z-index:1;}
 </div>
 </section>
 
-<!-- ══════════ SERVICES ══════════ -->
+<!-- SERVICES -->
 <section class="services" id="services">
 <div class="container">
   <div class="sec-hd reveal">
@@ -614,22 +558,22 @@ section{padding:100px 0;position:relative;z-index:1;}
   </div>
 </div>
 <div class="svc-grid">
-  <div class="svc-card wide reveal" onclick="openModal('sfModal')"><img src="Salesforce Implementation.jpg" alt="Salesforce Implementation" onerror="this.style.background='#0d1628';this.src=''"><div class="svc-shade"></div><div class="svc-info"><span class="svc-tag">Salesforce</span><div class="svc-name">Salesforce Implementation</div><div class="svc-desc">End-to-end Salesforce implementation tailored to your business processes — from discovery to go-live.</div><span class="svc-arr">Explore Service <i class="fas fa-arrow-right"></i></span></div></div>
-  <div class="svc-card reveal" onclick="openModal('consultingModal')"><img src="Salesforce Consulting.jpg" alt="Consulting" onerror="this.style.background='#0d1628';this.src=''"><div class="svc-shade"></div><div class="svc-info"><span class="svc-tag">Consulting</span><div class="svc-name">Salesforce Consulting</div><div class="svc-desc">Expert guidance to optimize your Salesforce platform and maximize ROI.</div><span class="svc-arr">Explore Service <i class="fas fa-arrow-right"></i></span></div></div>
-  <div class="svc-card reveal" onclick="openModal('managedModal')"><img src="Managed Services.jpg" alt="Managed Services" onerror="this.style.background='#0d1628';this.src=''"><div class="svc-shade"></div><div class="svc-info"><span class="svc-tag">Support</span><div class="svc-name">Managed Services</div><div class="svc-desc">Proactive maintenance and 24/7 support keeping your Salesforce org at peak performance.</div><span class="svc-arr">Explore Service <i class="fas fa-arrow-right"></i></span></div></div>
-  <div class="svc-card reveal" onclick="openModal('webdevModal')"><img src="Website Development.jpg" alt="Web Dev" onerror="this.style.background='#0d1628';this.src=''"><div class="svc-shade"></div><div class="svc-info"><span class="svc-tag">Development</span><div class="svc-name">Website Development</div><div class="svc-desc">Custom, high-performance websites built with modern technologies for maximum conversion.</div><span class="svc-arr">Explore Service <i class="fas fa-arrow-right"></i></span></div></div>
-  <div class="svc-card wide reveal" onclick="openModal('appdevModal')"><img src="App Development.jpg" alt="App Dev" onerror="this.style.background='#0d1628';this.src=''"><div class="svc-shade"></div><div class="svc-info"><span class="svc-tag">Mobile</span><div class="svc-name">App Development</div><div class="svc-desc">Native and cross-platform mobile applications that engage customers and scale with your growth.</div><span class="svc-arr">Explore Service <i class="fas fa-arrow-right"></i></span></div></div>
-  <div class="svc-card reveal" onclick="openModal('biModal')"><img src="BI &amp; Analytics.jpg" alt="BI" onerror="this.style.background='#0d1628';this.src=''"><div class="svc-shade"></div><div class="svc-info"><span class="svc-tag">Analytics</span><div class="svc-name">BI &amp; Analytics</div><div class="svc-desc">Transform raw data into actionable business intelligence with Tableau dashboards.</div><span class="svc-arr">Explore Service <i class="fas fa-arrow-right"></i></span></div></div>
-  <div class="svc-card reveal" onclick="openModal('trainingModal')"><img src="Salesforce Training.jpg" alt="Training" onerror="this.style.background='#0d1628';this.src=''"><div class="svc-shade"></div><div class="svc-info"><span class="svc-tag">Training</span><div class="svc-name">Salesforce Training</div><div class="svc-desc">Expert-led training programs and certification prep workshops to empower your team.</div><span class="svc-arr">Explore Service <i class="fas fa-arrow-right"></i></span></div></div>
-  <div class="svc-card reveal" onclick="openModal('healthcheckModal')"><img src="Health Check Audit.jpg" alt="Health Check" onerror="this.style.background='#0d1628';this.src=''"><div class="svc-shade"></div><div class="svc-info"><span class="svc-tag">Audit</span><div class="svc-name">Salesforce Health Check</div><div class="svc-desc">Comprehensive assessment with a clear prioritized roadmap for improvement.</div><span class="svc-arr">Explore Service <i class="fas fa-arrow-right"></i></span></div></div>
-  <div class="svc-card reveal" onclick="openModal('staffModal')"><img src="Staff Augmentation.jpg" alt="Staff" onerror="this.style.background='#0d1628';this.src=''"><div class="svc-shade"></div><div class="svc-info"><span class="svc-tag">Talent</span><div class="svc-name">Staff Augmentation</div><div class="svc-desc">Scale your team on-demand with certified Salesforce professionals ready from day one.</div><span class="svc-arr">Explore Service <i class="fas fa-arrow-right"></i></span></div></div>
+  <div class="svc-card wide reveal" onclick="openModal('sfModal')"><img src="Image1.png" alt="Salesforce Implementation" onerror="this.style.background='#030a18';this.src=''"><div class="svc-shade"></div><div class="svc-info"><span class="svc-tag">Salesforce</span><div class="svc-name">Salesforce Implementation</div><div class="svc-desc">End-to-end Salesforce implementation tailored to your business processes — from discovery to go-live.</div><span class="svc-arr">Explore Service <i class="fas fa-arrow-right"></i></span></div></div>
+  <div class="svc-card reveal" onclick="openModal('consultingModal')"><img src="Image2.png" alt="Consulting" onerror="this.style.background='#04091a';this.src=''"><div class="svc-shade"></div><div class="svc-info"><span class="svc-tag">Consulting</span><div class="svc-name">Salesforce Consulting</div><div class="svc-desc">Expert guidance to optimize your Salesforce platform and maximize ROI.</div><span class="svc-arr">Explore Service <i class="fas fa-arrow-right"></i></span></div></div>
+  <div class="svc-card reveal" onclick="openModal('managedModal')"><img src="Image1.png" alt="Managed Services" onerror="this.style.background='#020c14';this.src=''" style="opacity:.4"><div class="svc-shade"></div><div class="svc-info"><span class="svc-tag">Support</span><div class="svc-name">Managed Services</div><div class="svc-desc">Proactive maintenance and 24/7 support keeping your Salesforce org at peak performance.</div><span class="svc-arr">Explore Service <i class="fas fa-arrow-right"></i></span></div></div>
+  <div class="svc-card reveal" onclick="openModal('webdevModal')"><img src="Image2.png" alt="Web Dev" onerror="this.style.background='#030f1a';this.src=''" style="opacity:.5"><div class="svc-shade"></div><div class="svc-info"><span class="svc-tag">Development</span><div class="svc-name">Website Development</div><div class="svc-desc">Custom, high-performance websites built with modern technologies for maximum conversion.</div><span class="svc-arr">Explore Service <i class="fas fa-arrow-right"></i></span></div></div>
+  <div class="svc-card wide reveal" onclick="openModal('appdevModal')"><img src="Image1.png" alt="App Dev" onerror="this.style.background='#040a1a';this.src=''" style="opacity:.5"><div class="svc-shade"></div><div class="svc-info"><span class="svc-tag">Mobile</span><div class="svc-name">App Development</div><div class="svc-desc">Native and cross-platform mobile applications that engage customers and scale with your growth.</div><span class="svc-arr">Explore Service <i class="fas fa-arrow-right"></i></span></div></div>
+  <div class="svc-card reveal" onclick="openModal('biModal')"><img src="Image2.png" alt="BI" onerror="this.style.background='#02101a';this.src=''" style="opacity:.45"><div class="svc-shade"></div><div class="svc-info"><span class="svc-tag">Analytics</span><div class="svc-name">BI &amp; Analytics</div><div class="svc-desc">Transform raw data into actionable business intelligence with Tableau dashboards.</div><span class="svc-arr">Explore Service <i class="fas fa-arrow-right"></i></span></div></div>
+  <div class="svc-card reveal" onclick="openModal('trainingModal')"><img src="Image1.png" alt="Training" onerror="this.style.background='#03091a';this.src=''" style="opacity:.4"><div class="svc-shade"></div><div class="svc-info"><span class="svc-tag">Training</span><div class="svc-name">Salesforce Training</div><div class="svc-desc">Expert-led training programs and certification prep workshops to empower your team.</div><span class="svc-arr">Explore Service <i class="fas fa-arrow-right"></i></span></div></div>
+  <div class="svc-card reveal" onclick="openModal('healthcheckModal')"><img src="Image2.png" alt="Health Check" onerror="this.style.background='#030c18';this.src=''" style="opacity:.45"><div class="svc-shade"></div><div class="svc-info"><span class="svc-tag">Audit</span><div class="svc-name">Salesforce Health Check</div><div class="svc-desc">Comprehensive assessment with a clear prioritized roadmap for improvement.</div><span class="svc-arr">Explore Service <i class="fas fa-arrow-right"></i></span></div></div>
+  <div class="svc-card reveal" onclick="openModal('staffModal')"><img src="Image1.png" alt="Staff" onerror="this.style.background='#040a18';this.src=''" style="opacity:.4"><div class="svc-shade"></div><div class="svc-info"><span class="svc-tag">Talent</span><div class="svc-name">Staff Augmentation</div><div class="svc-desc">Scale your team on-demand with certified Salesforce professionals ready from day one.</div><span class="svc-arr">Explore Service <i class="fas fa-arrow-right"></i></span></div></div>
 </div>
 </section>
 
-<!-- ══════════ CAPABILITY TICKER ══════════ -->
+<!-- TICKER -->
 <section class="ticker">
 <div class="container">
-  <div class="sec-hd reveal" style="margin-bottom:44px;">
+  <div class="sec-hd reveal">
     <span class="sec-chip"><i class="fas fa-microchip"></i> Our Expertise</span>
     <h2 class="sec-title">Capabilities That <span class="c">Drive Results</span></h2>
     <p class="sec-desc">Deep expertise across the entire Salesforce ecosystem and digital landscape.</p>
@@ -649,7 +593,6 @@ section{padding:100px 0;position:relative;z-index:1;}
     <div class="tick-pill"><div class="tp-ico"><i class="fas fa-search"></i></div><span class="tp-txt">SEO Services</span></div>
     <div class="tick-pill"><div class="tp-ico"><i class="fas fa-ad"></i></div><span class="tp-txt">Paid Ads</span></div>
     <div class="tick-pill"><div class="tp-ico"><i class="fas fa-envelope-open-text"></i></div><span class="tp-txt">Email Marketing</span></div>
-    <!-- duplicates -->
     <div class="tick-pill"><div class="tp-ico"><i class="fab fa-salesforce"></i></div><span class="tp-txt">Sales Cloud</span></div>
     <div class="tick-pill"><div class="tp-ico"><i class="fas fa-headset"></i></div><span class="tp-txt">Service Cloud</span></div>
     <div class="tick-pill"><div class="tp-ico"><i class="fas fa-bullhorn"></i></div><span class="tp-txt">Marketing Cloud</span></div>
@@ -666,7 +609,7 @@ section{padding:100px 0;position:relative;z-index:1;}
 </div>
 </section>
 
-<!-- ══════════ INDUSTRIES ══════════ -->
+<!-- INDUSTRIES -->
 <section class="industries" id="industries">
 <div class="container">
   <div class="sec-hd reveal">
@@ -691,7 +634,7 @@ section{padding:100px 0;position:relative;z-index:1;}
 </div>
 </section>
 
-<!-- ══════════ WHY US ══════════ -->
+<!-- WHY US -->
 <section class="whyus" id="about">
 <div class="container">
   <div class="why-grid">
@@ -718,7 +661,7 @@ section{padding:100px 0;position:relative;z-index:1;}
 </div>
 </section>
 
-<!-- ══════════ TESTIMONIALS ══════════ -->
+<!-- TESTIMONIALS -->
 <section class="testimonials">
 <div class="container">
   <div class="sec-hd reveal">
@@ -730,9 +673,9 @@ section{padding:100px 0;position:relative;z-index:1;}
     <div class="testi-track" id="testiTrack">
       <div class="testi-card"><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="t-quote">"BridgeX Cloud transformed how our sales team operates. The Salesforce implementation was seamless and the ongoing support has been exceptional. Our pipeline visibility improved dramatically."</p><div class="t-author"><div class="t-av"><i class="fas fa-user"></i></div><div><div class="t-name">— Verified Client</div><div class="t-role">VP Sales, Healthcare Industry</div></div></div></div>
       <div class="testi-card"><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="t-quote">"The team delivered a complex multi-cloud Salesforce project on time and under budget. Their technical depth and communication set them apart from every other vendor we've worked with."</p><div class="t-author"><div class="t-av"><i class="fas fa-user"></i></div><div><div class="t-name">— Verified Client</div><div class="t-role">CTO, FinTech Industry</div></div></div></div>
-      <div class="testi-card"><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><p class="t-quote">"We went from chaotic spreadsheets to a fully automated Salesforce org in just 8 weeks. BridgeX made the transition painless and trained our entire team brilliantly. Highly recommended."</p><div class="t-author"><div class="t-av"><i class="fas fa-user"></i></div><div><div class="t-name">— Verified Client</div><div class="t-role">Director Operations, Manufacturing</div></div></div></div>
-      <div class="testi-card"><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="t-quote">"Their Salesforce health check was eye-opening. They identified critical issues we weren't even aware of, gave us a clear roadmap, and helped us fix everything step by step. Incredible value."</p><div class="t-author"><div class="t-av"><i class="fas fa-user"></i></div><div><div class="t-name">— Verified Client</div><div class="t-role">Head of IT, Retail Industry</div></div></div></div>
-      <div class="testi-card"><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="t-quote">"The digital marketing team at BridgeX generated significantly more qualified leads. Their Salesforce plus marketing integration approach is truly unique and very effective for our business."</p><div class="t-author"><div class="t-av"><i class="fas fa-user"></i></div><div><div class="t-name">— Verified Client</div><div class="t-role">CMO, EdTech Industry</div></div></div></div>
+      <div class="testi-card"><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><p class="t-quote">"We went from chaotic spreadsheets to a fully automated Salesforce org in just 8 weeks. BridgeX made the transition painless and trained our entire team brilliantly."</p><div class="t-author"><div class="t-av"><i class="fas fa-user"></i></div><div><div class="t-name">— Verified Client</div><div class="t-role">Director Operations, Manufacturing</div></div></div></div>
+      <div class="testi-card"><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="t-quote">"Their Salesforce health check was eye-opening. They identified critical issues we weren't even aware of, gave us a clear roadmap, and helped us fix everything step by step."</p><div class="t-author"><div class="t-av"><i class="fas fa-user"></i></div><div><div class="t-name">— Verified Client</div><div class="t-role">Head of IT, Retail Industry</div></div></div></div>
+      <div class="testi-card"><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="t-quote">"The digital marketing team at BridgeX generated significantly more qualified leads. Their Salesforce plus marketing integration approach is truly unique and very effective."</p><div class="t-author"><div class="t-av"><i class="fas fa-user"></i></div><div><div class="t-name">— Verified Client</div><div class="t-role">CMO, EdTech Industry</div></div></div></div>
     </div>
     <div class="t-dots" id="testiDots"></div>
     <div class="t-btns"><button class="t-btn" id="tPrev"><i class="fas fa-arrow-left"></i></button><button class="t-btn" id="tNext"><i class="fas fa-arrow-right"></i></button></div>
@@ -740,7 +683,7 @@ section{padding:100px 0;position:relative;z-index:1;}
 </div>
 </section>
 
-<!-- ══════════ CONTACT ══════════ -->
+<!-- CONTACT -->
 <section class="contact" id="contact">
 <div class="container">
   <div class="contact-grid">
@@ -751,7 +694,7 @@ section{padding:100px 0;position:relative;z-index:1;}
       <div class="ci-list">
         <div class="ci-item"><div class="ci-ico"><i class="fas fa-map-marker-alt"></i></div><div><h4>Address</h4><p>India</p></div></div>
         <div class="ci-item"><div class="ci-ico"><i class="fas fa-phone-alt"></i></div><div><h4>Phone</h4><p>+91 9319036765</p><p>+91 9685027211</p></div></div>
-        <div class="ci-item"><div class="ci-ico"><i class="fas fa-envelope"></i></div><div><h4>Email</h4><p><a href="/cdn-cgi/l/email-protection#620b0c040d2200100b0605071a010e0d17064c010d0f" style="color:inherit"><span class="__cf_email__" data-cfemail="1970777f76597b6b707d7e7c617a75766c7d377a7674">[email&#160;protected]</span></a></p></div></div>
+        <div class="ci-item"><div class="ci-ico"><i class="fas fa-envelope"></i></div><div><h4>Email</h4><p><a href="mailto:info@bridgexcloud.com" style="color:inherit">info@bridgexcloud.com</a></p></div></div>
         <div class="ci-item"><div class="ci-ico"><i class="fas fa-clock"></i></div><div><h4>Working Hours</h4><p>Mon – Fri: 9:00 AM – 6:00 PM</p></div></div>
       </div>
       <div class="soc-row">
@@ -780,7 +723,7 @@ section{padding:100px 0;position:relative;z-index:1;}
             <option value="Managed Services">Managed Services</option>
             <option value="Website Development">Website Development</option>
             <option value="App Development">App Development</option>
-            <option value="End To End Digital Transformation">Digital Transformation</option>
+            <option value="Digital Transformation">Digital Transformation</option>
             <option value="Business Consulting">Business Consulting</option>
             <option value="Staff Augmentation">Staff Augmentation</option>
             <option value="Digital Marketing">Digital Marketing</option>
@@ -794,7 +737,7 @@ section{padding:100px 0;position:relative;z-index:1;}
 </div>
 </section>
 
-<!-- ══════════ FOOTER ══════════ -->
+<!-- FOOTER -->
 <footer class="footer">
 <div class="container">
   <div class="footer-grid">
@@ -843,119 +786,72 @@ section{padding:100px 0;position:relative;z-index:1;}
 
 <button class="btt" id="btt"><i class="fas fa-arrow-up"></i></button>
 
-<!-- ══════════ MODALS ══════════ -->
-<div class="modal" id="sfModal"><div class="modal-content"><button class="modal-close" onclick="closeModal('sfModal')">&times;</button><div class="modal-head"><div class="modal-ico"><i class="fab fa-salesforce"></i></div><h2>Salesforce Implementation</h2><p>End-to-end implementation tailored to your business</p></div><div class="modal-body"><h3><i class="fas fa-microchip"></i> What We Deliver</h3><div class="modal-feats"><div class="mf"><div class="mf-ico"><i class="fas fa-search"></i></div><div><h4>Business Process Analysis</h4><p>Understand your workflows before implementation begins.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-cog"></i></div><div><h4>Salesforce Setup & Configuration</h4><p>Complete environment setup tailored to your business needs.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-cloud"></i></div><div><h4>Sales & Service Cloud</h4><p>Optimize pipelines, customer service, and automation.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-magic"></i></div><div><h4>Customization & Automation</h4><p>Custom objects, flows, validation rules, and reports.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-database"></i></div><div><h4>Data Migration & Integration</h4><p>Secure migration and integration with your tech stack.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-rocket"></i></div><div><h4>Training & Go-Live Support</h4><p>Full user training, QA, and post-launch support.</p></div></div></div></div><div class="modal-foot"><a href="#contact" class="btn btn-ai" onclick="closeModal('sfModal')">Get Started Today</a></div></div></div>
-<div class="modal" id="consultingModal"><div class="modal-content"><button class="modal-close" onclick="closeModal('consultingModal')">&times;</button><div class="modal-head"><div class="modal-ico"><i class="fas fa-users-cog"></i></div><h2>Salesforce Consulting</h2><p>Expert guidance to maximize your Salesforce ROI</p></div><div class="modal-body"><h3><i class="fas fa-microchip"></i> What We Deliver</h3><div class="modal-feats"><div class="mf"><div class="mf-ico"><i class="fas fa-search-dollar"></i></div><div><h4>ROI Assessment & Strategy</h4><p>Identify high-impact opportunities for improvement.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-chart-line"></i></div><div><h4>Performance Optimization</h4><p>Fine-tune your org for maximum efficiency and adoption.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-puzzle-piece"></i></div><div><h4>Process Improvement</h4><p>Streamline workflows and eliminate bottlenecks.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-shield-alt"></i></div><div><h4>Security & Compliance</h4><p>Ensure your org meets industry standards.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-road"></i></div><div><h4>Roadmap Planning</h4><p>Strategic plan aligned with your business objectives.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-graduation-cap"></i></div><div><h4>Best Practices Training</h4><p>Educate your team on governance and best practices.</p></div></div></div></div><div class="modal-foot"><a href="#contact" class="btn btn-ai" onclick="closeModal('consultingModal')">Get Started Today</a></div></div></div>
-<div class="modal" id="managedModal"><div class="modal-content"><button class="modal-close" onclick="closeModal('managedModal')">&times;</button><div class="modal-head"><div class="modal-ico"><i class="fas fa-cogs"></i></div><h2>Managed Services</h2><p>Ongoing support to keep your Salesforce running at peak</p></div><div class="modal-body"><h3><i class="fas fa-microchip"></i> What We Deliver</h3><div class="modal-feats"><div class="mf"><div class="mf-ico"><i class="fas fa-headset"></i></div><div><h4>24/7 Support</h4><p>Round-the-clock assistance for any issues your team faces.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-wrench"></i></div><div><h4>Proactive Maintenance</h4><p>Regular health checks to prevent issues before they arise.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-sync-alt"></i></div><div><h4>Release Management</h4><p>Stay current with Salesforce updates and new features.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-bug"></i></div><div><h4>Bug Fixes & Troubleshooting</h4><p>Quick resolution of technical issues and system errors.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-users"></i></div><div><h4>User Management</h4><p>Handle provisioning, permissions, and access control.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-chart-bar"></i></div><div><h4>Performance Monitoring</h4><p>Track system performance and deliver regular reports.</p></div></div></div></div><div class="modal-foot"><a href="#contact" class="btn btn-ai" onclick="closeModal('managedModal')">Get Started Today</a></div></div></div>
-<div class="modal" id="trainingModal"><div class="modal-content"><button class="modal-close" onclick="closeModal('trainingModal')">&times;</button><div class="modal-head"><div class="modal-ico"><i class="fas fa-chalkboard-teacher"></i></div><h2>Salesforce Training</h2><p>Empower your team with real Salesforce expertise</p></div><div class="modal-body"><h3><i class="fas fa-microchip"></i> What We Deliver</h3><div class="modal-feats"><div class="mf"><div class="mf-ico"><i class="fas fa-user-graduate"></i></div><div><h4>End User Training</h4><p>Training for sales, service, and marketing teams.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-code"></i></div><div><h4>Admin & Developer Training</h4><p>Advanced training for admins and developers.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-certificate"></i></div><div><h4>Certification Preparation</h4><p>Focused programs to help your team pass Salesforce exams.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-laptop"></i></div><div><h4>Hands-on Workshops</h4><p>Interactive sessions with real-world scenarios.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-book"></i></div><div><h4>Custom Training Materials</h4><p>Guides specific to your org setup and processes.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-video"></i></div><div><h4>On-Demand Learning</h4><p>Video tutorials your team can revisit anytime.</p></div></div></div></div><div class="modal-foot"><a href="#contact" class="btn btn-ai" onclick="closeModal('trainingModal')">Get Started Today</a></div></div></div>
-<div class="modal" id="webdevModal"><div class="modal-content"><button class="modal-close" onclick="closeModal('webdevModal')">&times;</button><div class="modal-head"><div class="modal-ico"><i class="fas fa-laptop-code"></i></div><h2>Website Development</h2><p>Modern, responsive websites that drive real results</p></div><div class="modal-body"><h3><i class="fas fa-microchip"></i> What We Deliver</h3><div class="modal-feats"><div class="mf"><div class="mf-ico"><i class="fas fa-mobile-alt"></i></div><div><h4>Responsive Design</h4><p>Websites that look great on every device and screen size.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-shopping-cart"></i></div><div><h4>E-commerce Solutions</h4><p>Full-featured online stores with secure payment integrations.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-tachometer-alt"></i></div><div><h4>Performance Optimization</h4><p>Lightning-fast websites optimized for Core Web Vitals.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-palette"></i></div><div><h4>Custom UI/UX Design</h4><p>Beautiful, conversion-focused interfaces for your brand.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-cog"></i></div><div><h4>CMS Integration</h4><p>Easy content management with WordPress or custom CMS.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-lock"></i></div><div><h4>Security & Compliance</h4><p>SSL, data protection, and GDPR compliance built-in.</p></div></div></div></div><div class="modal-foot"><a href="#contact" class="btn btn-ai" onclick="closeModal('webdevModal')">Get Started Today</a></div></div></div>
+<!-- MODALS -->
+<div class="modal" id="sfModal"><div class="modal-content"><button class="modal-close" onclick="closeModal('sfModal')">&times;</button><div class="modal-head"><div class="modal-ico"><i class="fab fa-salesforce"></i></div><h2>Salesforce Implementation</h2><p>End-to-end implementation tailored to your business</p></div><div class="modal-body"><h3><i class="fas fa-microchip"></i> What We Deliver</h3><div class="modal-feats"><div class="mf"><div class="mf-ico"><i class="fas fa-search"></i></div><div><h4>Business Process Analysis</h4><p>Understand your workflows before implementation begins.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-cog"></i></div><div><h4>Salesforce Setup &amp; Configuration</h4><p>Complete environment setup tailored to your business needs.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-cloud"></i></div><div><h4>Sales &amp; Service Cloud</h4><p>Optimize pipelines, customer service, and automation.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-magic"></i></div><div><h4>Customization &amp; Automation</h4><p>Custom objects, flows, validation rules, and reports.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-database"></i></div><div><h4>Data Migration &amp; Integration</h4><p>Secure migration and integration with your tech stack.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-rocket"></i></div><div><h4>Training &amp; Go-Live Support</h4><p>Full user training, QA, and post-launch support.</p></div></div></div></div><div class="modal-foot"><a href="#contact" class="btn btn-ai" onclick="closeModal('sfModal')">Get Started Today</a></div></div></div>
+<div class="modal" id="consultingModal"><div class="modal-content"><button class="modal-close" onclick="closeModal('consultingModal')">&times;</button><div class="modal-head"><div class="modal-ico"><i class="fas fa-users-cog"></i></div><h2>Salesforce Consulting</h2><p>Expert guidance to maximize your Salesforce ROI</p></div><div class="modal-body"><h3><i class="fas fa-microchip"></i> What We Deliver</h3><div class="modal-feats"><div class="mf"><div class="mf-ico"><i class="fas fa-search-dollar"></i></div><div><h4>ROI Assessment &amp; Strategy</h4><p>Identify high-impact opportunities for improvement.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-chart-line"></i></div><div><h4>Performance Optimization</h4><p>Fine-tune your org for maximum efficiency and adoption.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-puzzle-piece"></i></div><div><h4>Process Improvement</h4><p>Streamline workflows and eliminate bottlenecks.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-shield-alt"></i></div><div><h4>Security &amp; Compliance</h4><p>Ensure your org meets industry standards.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-road"></i></div><div><h4>Roadmap Planning</h4><p>Strategic plan aligned with your business objectives.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-graduation-cap"></i></div><div><h4>Best Practices Training</h4><p>Educate your team on governance and best practices.</p></div></div></div></div><div class="modal-foot"><a href="#contact" class="btn btn-ai" onclick="closeModal('consultingModal')">Get Started Today</a></div></div></div>
+<div class="modal" id="managedModal"><div class="modal-content"><button class="modal-close" onclick="closeModal('managedModal')">&times;</button><div class="modal-head"><div class="modal-ico"><i class="fas fa-cogs"></i></div><h2>Managed Services</h2><p>Ongoing support to keep your Salesforce running at peak</p></div><div class="modal-body"><h3><i class="fas fa-microchip"></i> What We Deliver</h3><div class="modal-feats"><div class="mf"><div class="mf-ico"><i class="fas fa-headset"></i></div><div><h4>24/7 Support</h4><p>Round-the-clock assistance for any issues your team faces.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-wrench"></i></div><div><h4>Proactive Maintenance</h4><p>Regular health checks to prevent issues before they arise.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-sync-alt"></i></div><div><h4>Release Management</h4><p>Stay current with Salesforce updates and new features.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-bug"></i></div><div><h4>Bug Fixes &amp; Troubleshooting</h4><p>Quick resolution of technical issues and system errors.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-users"></i></div><div><h4>User Management</h4><p>Handle provisioning, permissions, and access control.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-chart-bar"></i></div><div><h4>Performance Monitoring</h4><p>Track system performance and deliver regular reports.</p></div></div></div></div><div class="modal-foot"><a href="#contact" class="btn btn-ai" onclick="closeModal('managedModal')">Get Started Today</a></div></div></div>
+<div class="modal" id="trainingModal"><div class="modal-content"><button class="modal-close" onclick="closeModal('trainingModal')">&times;</button><div class="modal-head"><div class="modal-ico"><i class="fas fa-chalkboard-teacher"></i></div><h2>Salesforce Training</h2><p>Empower your team with real Salesforce expertise</p></div><div class="modal-body"><h3><i class="fas fa-microchip"></i> What We Deliver</h3><div class="modal-feats"><div class="mf"><div class="mf-ico"><i class="fas fa-user-graduate"></i></div><div><h4>End User Training</h4><p>Training for sales, service, and marketing teams.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-code"></i></div><div><h4>Admin &amp; Developer Training</h4><p>Advanced training for admins and developers.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-certificate"></i></div><div><h4>Certification Preparation</h4><p>Focused programs to help your team pass Salesforce exams.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-laptop"></i></div><div><h4>Hands-on Workshops</h4><p>Interactive sessions with real-world scenarios.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-book"></i></div><div><h4>Custom Training Materials</h4><p>Guides specific to your org setup and processes.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-video"></i></div><div><h4>On-Demand Learning</h4><p>Video tutorials your team can revisit anytime.</p></div></div></div></div><div class="modal-foot"><a href="#contact" class="btn btn-ai" onclick="closeModal('trainingModal')">Get Started Today</a></div></div></div>
+<div class="modal" id="webdevModal"><div class="modal-content"><button class="modal-close" onclick="closeModal('webdevModal')">&times;</button><div class="modal-head"><div class="modal-ico"><i class="fas fa-laptop-code"></i></div><h2>Website Development</h2><p>Modern, responsive websites that drive real results</p></div><div class="modal-body"><h3><i class="fas fa-microchip"></i> What We Deliver</h3><div class="modal-feats"><div class="mf"><div class="mf-ico"><i class="fas fa-mobile-alt"></i></div><div><h4>Responsive Design</h4><p>Websites that look great on every device and screen size.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-shopping-cart"></i></div><div><h4>E-commerce Solutions</h4><p>Full-featured online stores with secure payment integrations.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-tachometer-alt"></i></div><div><h4>Performance Optimization</h4><p>Lightning-fast websites optimized for Core Web Vitals.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-palette"></i></div><div><h4>Custom UI/UX Design</h4><p>Beautiful, conversion-focused interfaces for your brand.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-cog"></i></div><div><h4>CMS Integration</h4><p>Easy content management with WordPress or custom CMS.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-lock"></i></div><div><h4>Security &amp; Compliance</h4><p>SSL, data protection, and GDPR compliance built-in.</p></div></div></div></div><div class="modal-foot"><a href="#contact" class="btn btn-ai" onclick="closeModal('webdevModal')">Get Started Today</a></div></div></div>
 <div class="modal" id="appdevModal"><div class="modal-content"><button class="modal-close" onclick="closeModal('appdevModal')">&times;</button><div class="modal-head"><div class="modal-ico"><i class="fas fa-mobile-alt"></i></div><h2>App Development</h2><p>Native and cross-platform mobile applications</p></div><div class="modal-body"><h3><i class="fas fa-microchip"></i> What We Deliver</h3><div class="modal-feats"><div class="mf"><div class="mf-ico"><i class="fab fa-apple"></i></div><div><h4>iOS Development</h4><p>Native iOS apps built with Swift and SwiftUI.</p></div></div><div class="mf"><div class="mf-ico"><i class="fab fa-android"></i></div><div><h4>Android Development</h4><p>Native Android apps using Kotlin and Jetpack Compose.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-layer-group"></i></div><div><h4>Cross-Platform Apps</h4><p>Build once, deploy everywhere with React Native or Flutter.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-paint-brush"></i></div><div><h4>UI/UX Design</h4><p>Intuitive interfaces following platform design guidelines.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-cloud"></i></div><div><h4>Backend Integration</h4><p>Seamless connections to APIs, Salesforce, and cloud services.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-rocket"></i></div><div><h4>App Store Deployment</h4><p>Full support for App Store and Google Play publishing.</p></div></div></div></div><div class="modal-foot"><a href="#contact" class="btn btn-ai" onclick="closeModal('appdevModal')">Get Started Today</a></div></div></div>
 <div class="modal" id="biModal"><div class="modal-content"><button class="modal-close" onclick="closeModal('biModal')">&times;</button><div class="modal-head"><div class="modal-ico"><i class="fas fa-chart-pie"></i></div><h2>BI Services</h2><p>Transform your data into powerful business intelligence</p></div><div class="modal-body"><h3><i class="fas fa-microchip"></i> What We Deliver</h3><div class="modal-feats"><div class="mf"><div class="mf-ico"><i class="fas fa-chart-line"></i></div><div><h4>Data Visualization</h4><p>Interactive dashboards on Tableau, Power BI, and Salesforce.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-database"></i></div><div><h4>Data Warehousing</h4><p>Centralized storage powering accurate analysis and reporting.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-project-diagram"></i></div><div><h4>ETL Development</h4><p>Reliable pipelines from multiple data sources.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-brain"></i></div><div><h4>Predictive Analytics</h4><p>AI-powered forecasting to spot trends before competitors.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-file-alt"></i></div><div><h4>Custom Reports</h4><p>Tailored reporting for your KPIs and business goals.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-users"></i></div><div><h4>Self-Service Analytics</h4><p>Empower users to build their own reports without IT.</p></div></div></div></div><div class="modal-foot"><a href="#contact" class="btn btn-ai" onclick="closeModal('biModal')">Get Started Today</a></div></div></div>
 <div class="modal" id="healthcheckModal"><div class="modal-content"><button class="modal-close" onclick="closeModal('healthcheckModal')">&times;</button><div class="modal-head"><div class="modal-ico"><i class="fas fa-heartbeat"></i></div><h2>Salesforce Health Check</h2><p>A comprehensive audit of your Salesforce org</p></div><div class="modal-body"><h3><i class="fas fa-microchip"></i> What We Deliver</h3><div class="modal-feats"><div class="mf"><div class="mf-ico"><i class="fas fa-stethoscope"></i></div><div><h4>Technical Audit</h4><p>In-depth review of your entire configuration and customizations.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-shield-alt"></i></div><div><h4>Security Assessment</h4><p>Identify vulnerabilities and recommend hardening measures.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-tachometer-alt"></i></div><div><h4>Performance Analysis</h4><p>Evaluate load times, query performance, and automation efficiency.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-user-check"></i></div><div><h4>User Adoption Review</h4><p>Assess how effectively your teams use Salesforce features.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-clipboard-check"></i></div><div><h4>Compliance Check</h4><p>Ensure your org meets industry regulations and best practices.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-list-ul"></i></div><div><h4>Prioritized Recommendations</h4><p>Clear, actionable report with a ranked improvement roadmap.</p></div></div></div></div><div class="modal-foot"><a href="#contact" class="btn btn-ai" onclick="closeModal('healthcheckModal')">Get Started Today</a></div></div></div>
 <div class="modal" id="staffModal"><div class="modal-content"><button class="modal-close" onclick="closeModal('staffModal')">&times;</button><div class="modal-head"><div class="modal-ico"><i class="fas fa-user-plus"></i></div><h2>Staff Augmentation</h2><p>Scale your team with pre-vetted Salesforce talent</p></div><div class="modal-body"><h3><i class="fas fa-microchip"></i> What We Deliver</h3><div class="modal-feats"><div class="mf"><div class="mf-ico"><i class="fas fa-user-tie"></i></div><div><h4>Certified Salesforce Experts</h4><p>Consultants, developers, and admins on demand.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-users-cog"></i></div><div><h4>Technical Resources</h4><p>Architects, engineers, and QA specialists for your projects.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-clock"></i></div><div><h4>Flexible Engagement Models</h4><p>Short-term, long-term, or project-based — your choice.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-search"></i></div><div><h4>Pre-Vetted Talent</h4><p>Every professional thoroughly screened for skills and fit.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-rocket"></i></div><div><h4>Rapid Onboarding</h4><p>Resources contributing meaningfully from day one.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-dollar-sign"></i></div><div><h4>Cost-Effective Scaling</h4><p>World-class expertise without full-time hiring overhead.</p></div></div></div></div><div class="modal-foot"><a href="#contact" class="btn btn-ai" onclick="closeModal('staffModal')">Get Started Today</a></div></div></div>
-<div class="modal" id="marketingModal"><div class="modal-content"><button class="modal-close" onclick="closeModal('marketingModal')">&times;</button><div class="modal-head"><div class="modal-ico"><i class="fas fa-bullhorn"></i></div><h2>Digital Marketing</h2><p>Data-driven strategies that fuel measurable growth</p></div><div class="modal-body"><h3><i class="fas fa-microchip"></i> What We Deliver</h3><div class="modal-feats"><div class="mf"><div class="mf-ico"><i class="fas fa-search"></i></div><div><h4>SEO Services</h4><p>Improve organic search rankings and capture high-intent traffic.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-ad"></i></div><div><h4>PPC Advertising</h4><p>Targeted paid campaigns on Google, Facebook, and LinkedIn.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-share-alt"></i></div><div><h4>Social Media Marketing</h4><p>Build and engage your audience across all platforms.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-envelope"></i></div><div><h4>Email Marketing</h4><p>Nurture leads through personalized, automated journeys.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-pen-fancy"></i></div><div><h4>Content Marketing</h4><p>Compelling content that drives engagement and conversions.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-chart-line"></i></div><div><h4>Analytics & Reporting</h4><p>Full-funnel tracking and continuous campaign optimization.</p></div></div></div></div><div class="modal-foot"><a href="#contact" class="btn btn-ai" onclick="closeModal('marketingModal')">Get Started Today</a></div></div></div>
+<div class="modal" id="marketingModal"><div class="modal-content"><button class="modal-close" onclick="closeModal('marketingModal')">&times;</button><div class="modal-head"><div class="modal-ico"><i class="fas fa-bullhorn"></i></div><h2>Digital Marketing</h2><p>Data-driven strategies that fuel measurable growth</p></div><div class="modal-body"><h3><i class="fas fa-microchip"></i> What We Deliver</h3><div class="modal-feats"><div class="mf"><div class="mf-ico"><i class="fas fa-search"></i></div><div><h4>SEO Services</h4><p>Improve organic search rankings and capture high-intent traffic.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-ad"></i></div><div><h4>PPC Advertising</h4><p>Targeted paid campaigns on Google, Facebook, and LinkedIn.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-share-alt"></i></div><div><h4>Social Media Marketing</h4><p>Build and engage your audience across all platforms.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-envelope"></i></div><div><h4>Email Marketing</h4><p>Nurture leads through personalized, automated journeys.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-pen-fancy"></i></div><div><h4>Content Marketing</h4><p>Compelling content that drives engagement and conversions.</p></div></div><div class="mf"><div class="mf-ico"><i class="fas fa-chart-line"></i></div><div><h4>Analytics &amp; Reporting</h4><p>Full-funnel tracking and continuous campaign optimization.</p></div></div></div></div><div class="modal-foot"><a href="#contact" class="btn btn-ai" onclick="closeModal('marketingModal')">Get Started Today</a></div></div></div>
 
-<!-- ══════════ JAVASCRIPT ══════════ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* ── CUSTOM CURSOR ── */
+<script>
+/* CURSOR */
 const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
 let mx=0,my=0,rx=0,ry=0;
-window.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  cur.style.transform=`translate(${mx-7}px,${my-7}px)`;
-});
-(function ringFollow(){
-  rx+=(mx-rx-20)*.12;ry+=(my-ry-20)*.12;
-  ring.style.transform=`translate(${rx}px,${ry}px)`;
-  requestAnimationFrame(ringFollow);
-})();
+window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.transform=`translate(${mx-7}px,${my-7}px)`;});
+(function ringFollow(){rx+=(mx-rx-20)*.12;ry+=(my-ry-20)*.12;ring.style.transform=`translate(${rx}px,${ry}px)`;requestAnimationFrame(ringFollow);})();
 document.querySelectorAll('a,button,.svc-card,.ind-card,.ch-card,.t-btn').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.transform+=` scale(2.5)`;ring.style.width='60px';ring.style.height='60px';ring.style.borderColor='rgba(0,245,255,.5)';});
+  el.addEventListener('mouseenter',()=>{ring.style.width='60px';ring.style.height='60px';ring.style.borderColor='rgba(0,245,255,.5)';});
   el.addEventListener('mouseleave',()=>{ring.style.width='40px';ring.style.height='40px';ring.style.borderColor='rgba(0,245,255,.4)';});
 });
 
-/* ── NEURAL CANVAS ── */
+/* NEURAL CANVAS */
 (function(){
-  const c=document.getElementById('neural-canvas');
-  const ctx=c.getContext('2d');
+  const c=document.getElementById('neural-canvas'),ctx=c.getContext('2d');
   let W,H,nodes=[];
   const resize=()=>{W=c.width=window.innerWidth;H=c.height=window.innerHeight;};
   resize();window.addEventListener('resize',resize);
   class Node{
     constructor(){this.reset();}
-    reset(){
-      this.x=Math.random()*W;this.y=Math.random()*H;
-      this.r=Math.random()*1.8+.4;
-      this.vx=(Math.random()-.5)*.4;this.vy=(Math.random()-.5)*.4;
-      this.pulse=Math.random()*Math.PI*2;
-      this.glow=Math.random()>.85;
-    }
-    move(){
-      this.x+=this.vx;this.y+=this.vy;this.pulse+=.02;
-      if(this.x<0||this.x>W||this.y<0||this.y>H)this.reset();
-    }
-    draw(){
-      const a=.4+Math.sin(this.pulse)*.2;
-      if(this.glow){
-        ctx.beginPath();ctx.arc(this.x,this.y,this.r*4,0,Math.PI*2);
-        ctx.fillStyle=`rgba(0,245,255,${a*.08})`;ctx.fill();
-      }
-      ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
-      ctx.fillStyle=this.glow?`rgba(0,245,255,${a})`:`rgba(100,180,255,${a*.6})`;ctx.fill();
-    }
+    reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*1.8+.4;this.vx=(Math.random()-.5)*.4;this.vy=(Math.random()-.5)*.4;this.pulse=Math.random()*Math.PI*2;this.glow=Math.random()>.85;}
+    move(){this.x+=this.vx;this.y+=this.vy;this.pulse+=.02;if(this.x<0||this.x>W||this.y<0||this.y>H)this.reset();}
+    draw(){const a=.4+Math.sin(this.pulse)*.2;if(this.glow){ctx.beginPath();ctx.arc(this.x,this.y,this.r*4,0,Math.PI*2);ctx.fillStyle=`rgba(0,245,255,${a*.08})`;ctx.fill();}ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=this.glow?`rgba(0,245,255,${a})`:`rgba(100,180,255,${a*.6})`;ctx.fill();}
   }
   for(let i=0;i<140;i++)nodes.push(new Node());
-  function connect(){
-    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
-      const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y;
-      const d=Math.sqrt(dx*dx+dy*dy);
-      if(d<120){
-        const a=(1-d/120)*.18;
-        ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);
-        ctx.strokeStyle=`rgba(0,245,255,${a})`;ctx.lineWidth=.7;ctx.stroke();
-      }
-    }
-  }
+  function connect(){for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<120){const a=(1-d/120)*.18;ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle=`rgba(0,245,255,${a})`;ctx.lineWidth=.7;ctx.stroke();}}}
   function tick(){ctx.clearRect(0,0,W,H);nodes.forEach(n=>{n.move();n.draw();});connect();requestAnimationFrame(tick);}
   tick();
 })();
 
-/* ── TYPEWRITER ── */
+/* TYPEWRITER */
 const phrases=['Salesforce Solutions','AI-Powered Growth','Digital Excellence','Business Success'];
 let pi=0,ci=0,del=false,tw=document.getElementById('typewriter');
-function type(){
-  const w=phrases[pi];
-  if(!del){tw.textContent=w.slice(0,++ci);if(ci===w.length){del=true;setTimeout(type,1800);return;}}
-  else{tw.textContent=w.slice(0,--ci);if(ci===0){del=false;pi=(pi+1)%phrases.length;}}
-  setTimeout(type,del?55:90);
-}
+function type(){const w=phrases[pi];if(!del){tw.textContent=w.slice(0,++ci);if(ci===w.length){del=true;setTimeout(type,1800);return;}}else{tw.textContent=w.slice(0,--ci);if(ci===0){del=false;pi=(pi+1)%phrases.length;}}setTimeout(type,del?55:90);}
 setTimeout(type,800);
 
-/* ── COUNTER ── */
-function animCount(el,end){let v=0,s=end/60/2;const t=setInterval(()=>{v=Math.min(v+s,end);el.textContent=Math.floor(v);if(v>=end)clearInterval(t);},16);}
+/* COUNTERS */
+function animCount(el,end){let v=0,s=end/60;const t=setInterval(()=>{v=Math.min(v+s,end);el.textContent=Math.floor(v);if(v>=end)clearInterval(t);},16);}
 let counted=false;
+function startCounters(){if(!counted){counted=true;animCount(document.getElementById('cnt1'),50);animCount(document.getElementById('cnt2'),80);animCount(document.getElementById('cnt3'),10);}}
+setTimeout(startCounters,800);
 
-/* ── SCROLL REVEAL ── */
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('vis');
-      if(!counted&&e.target.closest('.hero-stats')){counted=true;animCount(document.getElementById('cnt1'),50);animCount(document.getElementById('cnt2'),80);animCount(document.getElementById('cnt3'),10);}
-    }
-  });
-},{threshold:.1});
+/* SCROLL REVEAL */
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-setTimeout(()=>{if(!counted){counted=true;animCount(document.getElementById('cnt1'),50);animCount(document.getElementById('cnt2'),80);animCount(document.getElementById('cnt3'),10);}},1200);
 
-/* ── NAVBAR ── */
+/* NAVBAR */
 const navbar=document.getElementById('navbar');
 window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>60));
 
-/* ── MOBILE MENU ── */
+/* MOBILE MENU */
 const mobToggle=document.getElementById('mobToggle'),navLinks=document.getElementById('navLinks');
 mobToggle.addEventListener('click',()=>{navLinks.classList.toggle('open');mobToggle.querySelector('i').classList.toggle('fa-bars');mobToggle.querySelector('i').classList.toggle('fa-times');});
 
-/* ── DROPDOWN ── */
+/* DROPDOWN */
 const nd=document.getElementById('navDrop'),dp=document.getElementById('dropPanel'),dt=document.getElementById('dropTrigger');
 let dTimeout;
 nd.addEventListener('mouseenter',()=>{if(window.innerWidth>768){clearTimeout(dTimeout);dp.classList.add('active');nd.classList.add('open');}});
@@ -963,38 +859,41 @@ nd.addEventListener('mouseleave',()=>{if(window.innerWidth>768){dTimeout=setTime
 dp.addEventListener('mouseenter',()=>{if(window.innerWidth>768)clearTimeout(dTimeout);});
 dp.addEventListener('mouseleave',()=>{if(window.innerWidth>768)dTimeout=setTimeout(()=>{dp.classList.remove('active');nd.classList.remove('open');},280);});
 dt.addEventListener('click',e=>{if(window.innerWidth<=768){e.preventDefault();nd.classList.toggle('open');dp.classList.toggle('active');}});
-document.querySelectorAll('.dlink').forEach(l=>l.addEventListener('click',()=>{dp.classList.remove('active');nd.classList.remove('open');navLinks.classList.remove('open');mobToggle.querySelector('i').classList.add('fa-bars');mobToggle.querySelector('i').classList.remove('fa-times');}));
+document.querySelectorAll('.dlink').forEach(l=>l.addEventListener('click',()=>{dp.classList.remove('active');nd.classList.remove('open');navLinks.classList.remove('open');}));
 
-/* ── SMOOTH SCROLL ── */
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){
-  const h=this.getAttribute('href');
-  if(h.length>1&&document.querySelector(h)){e.preventDefault();window.scrollTo({top:document.querySelector(h).offsetTop-76,behavior:'smooth'});navLinks.classList.remove('open');mobToggle.querySelector('i').classList.add('fa-bars');mobToggle.querySelector('i').classList.remove('fa-times');dp.classList.remove('active');}
-}));
+/* SMOOTH SCROLL */
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){const h=this.getAttribute('href');if(h.length>1&&document.querySelector(h)){e.preventDefault();window.scrollTo({top:document.querySelector(h).offsetTop-76,behavior:'smooth'});navLinks.classList.remove('open');dp.classList.remove('active');}}));
 
-/* ── BACK TO TOP ── */
+/* BACK TO TOP */
 const btt=document.getElementById('btt');
 window.addEventListener('scroll',()=>btt.classList.toggle('show',window.scrollY>500));
 btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-/* ── TESTIMONIALS ── */
+/* TESTIMONIALS */
 const track=document.getElementById('testiTrack'),dotsC=document.getElementById('testiDots');
 const cards=track.querySelectorAll('.testi-card');
-let cur2=0,perV=window.innerWidth<=768?1:window.innerWidth<=1024?2:3;
-window.addEventListener('resize',()=>{perV=window.innerWidth<=768?1:window.innerWidth<=1024?2:3;goTo(cur2);});
+let cur2=0;
+function getPerV(){return window.innerWidth<=768?1:window.innerWidth<=1024?2:3;}
+let perV=getPerV();
+window.addEventListener('resize',()=>{perV=getPerV();goTo(cur2);});
 const total=Math.ceil(cards.length/perV);
-for(let i=0;i<total;i++){const d=document.createElement('div');d.className='t-dot'+(i===0?' on':'');d.addEventListener('click',()=>goTo(i));dotsC.appendChild(d);}
-function goTo(idx){cur2=Math.max(0,Math.min(idx,total-1));track.style.transform=`translateX(-${cur2*(100/perV)}%)`;dotsC.querySelectorAll('.t-dot').forEach((d,i)=>d.classList.toggle('on',i===cur2));}
-document.getElementById('tPrev').addEventListener('click',()=>goTo(cur2>0?cur2-1:total-1));
-document.getElementById('tNext').addEventListener('click',()=>goTo(cur2<total-1?cur2+1:0));
-let aT=setInterval(()=>goTo(cur2<total-1?cur2+1:0),5000);
+for(let i=0;i<Math.ceil(cards.length/perV);i++){const d=document.createElement('div');d.className='t-dot'+(i===0?' on':'');d.addEventListener('click',()=>goTo(i));dotsC.appendChild(d);}
+function goTo(idx){cur2=Math.max(0,Math.min(idx,Math.ceil(cards.length/getPerV())-1));const w=cards[0].getBoundingClientRect().width+22;track.style.transform=`translateX(-${cur2*w*getPerV()}px)`;dotsC.querySelectorAll('.t-dot').forEach((d,i)=>d.classList.toggle('on',i===cur2));}
+document.getElementById('tPrev').addEventListener('click',()=>goTo(cur2>0?cur2-1:Math.ceil(cards.length/getPerV())-1));
+document.getElementById('tNext').addEventListener('click',()=>goTo(cur2<Math.ceil(cards.length/getPerV())-1?cur2+1:0));
+let aT=setInterval(()=>goTo(cur2<Math.ceil(cards.length/getPerV())-1?cur2+1:0),5000);
 track.addEventListener('mouseenter',()=>clearInterval(aT));
-track.addEventListener('mouseleave',()=>{aT=setInterval(()=>goTo(cur2<total-1?cur2+1:0),5000);});
+track.addEventListener('mouseleave',()=>{aT=setInterval(()=>goTo(cur2<Math.ceil(cards.length/getPerV())-1?cur2+1:0),5000);});
 
-/* ── NEWSLETTER ── */
+/* NEWSLETTER */
 document.getElementById('nlForm').addEventListener('submit',function(e){e.preventDefault();this.innerHTML='<p style="color:#00f5ff;font-weight:600;padding:12px 0"><i class="fas fa-check-circle"></i> Subscribed successfully!</p>';});
 
-/* ── MODALS ── */
+/* MODALS */
 function openModal(id){document.getElementById(id).style.display='flex';document.body.style.overflow='hidden';}
 function closeModal(id){document.getElementById(id).style.display='none';document.body.style.overflow='';}
 const mids=['sfModal','consultingModal','managedModal','trainingModal','webdevModal','appdevModal','biModal','healthcheckModal','staffModal','marketingModal'];
-mids.forEach(id=>{const m=document.getElementById(id);if(m){m.addEventListen
+mids.forEach(id=>{const m=document.getElementById(id);if(m)m.addEventListener('click',e=>{if(e.target===m)closeModal(id);});});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')mids.forEach(id=>{const m=document.getElementById(id);if(m&&m.style.display==='flex')closeModal(id);});});
+</script>
+</body>
+</html>
