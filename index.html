@@ -693,7 +693,7 @@ section{padding:100px 0;position:relative;z-index:1;}
       <p class="contact-p">Ready to transform your business? Reach out for a free consultation and let our experts map the fastest path to your goals.</p>
       <div class="ci-list">
         <div class="ci-item"><div class="ci-ico"><i class="fas fa-map-marker-alt"></i></div><div><h4>Address</h4><p>C- 060, B 128, Sector 2, Noida, Gautam Buddha Nagar, Noida, Uttar Pradesh, India, 201301</p></div></div>
-        <div class="ci-item"><div class="ci-ico"><i class="fas fa-phone-alt"></i></div><div><h4>Phone</h4><p>+91 9319036765</p><p>+91 9685027211</p></div></div>
+        <div class="ci-item"><div class="ci-ico"><i class="fas fa-phone-alt"></i></div><div><h4>Phone</h4><p>+91 7999841087</p><p>+91 9685027211</p></div></div>
         <div class="ci-item"><div class="ci-ico"><i class="fas fa-envelope"></i></div><div><h4>Email</h4><p><a href="mailto:info@bridgexcloud.com" style="color:inherit">info@bridgexcloud.com</a></p></div></div>
         <div class="ci-item"><div class="ci-ico"><i class="fas fa-clock"></i></div><div><h4>Working Hours</h4><p>Mon – Fri: 9:00 AM – 6:00 PM</p></div></div>
       </div>
@@ -705,33 +705,55 @@ section{padding:100px 0;position:relative;z-index:1;}
       </div>
     </div>
     <div class="contact-form-box reveal">
-      <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
-        <input type="hidden" name="oid" value="00Dfj00000F0N8r">
-        <input type="hidden" name="retURL" value="https://bridgexcloud.com/">
-        <input type="hidden" name="lead_source" value="Web">
-        <div class="form-row">
-          <div class="fg"><label>Name</label><input type="text" name="last_name" placeholder="Your name" required></div>
-          <div class="fg"><label>Email</label><input type="email" name="email" placeholder="Your email" required></div>
-        </div>
-        <div class="fg"><label>Phone</label><input type="tel" name="phone" placeholder="Your phone number" required></div>
-        <div class="fg">
-          <label>Service</label>
-          <select name="industry" required>
-            <option value="">Select a service</option>
-            <option value="Salesforce Implementation">Salesforce Implementation</option>
-            <option value="Salesforce Consulting">Salesforce Consulting</option>
-            <option value="Managed Services">Managed Services</option>
-            <option value="Website Development">Website Development</option>
-            <option value="App Development">App Development</option>
-            <option value="Digital Transformation">Digital Transformation</option>
-            <option value="Business Consulting">Business Consulting</option>
-            <option value="Staff Augmentation">Staff Augmentation</option>
-            <option value="Digital Marketing">Digital Marketing</option>
-          </select>
-        </div>
-        <div class="fg"><label>Message</label><textarea name="description" placeholder="Tell us about your project…"></textarea></div>
-        <button type="submit" class="btn btn-ai btn-full"><i class="fas fa-paper-plane"></i> Send Message</button>
-      </form>
+      <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00Df600000G4wU1" method="POST">
+
+<!-- Salesforce Required Hidden Fields -->
+<input type="hidden" name="oid" value="00Df600000G4wU1">
+<input type="hidden" name="retURL" value="https://bridgexcloud.com/">
+<input type="hidden" name="lead_source" value="Website">
+
+<div class="form-row">
+  <div class="fg">
+    <label>First Name</label>
+    <input id="first_name" name="first_name" maxlength="40" type="text" placeholder="First Name">
+  </div>
+
+  <div class="fg">
+    <label>Last Name</label>
+    <input id="last_name" name="last_name" maxlength="80" type="text" placeholder="Last Name" required>
+  </div>
+</div>
+
+<div class="fg">
+  <label>Email</label>
+  <input id="email" name="email" maxlength="80" type="email" placeholder="Email" required>
+</div>
+
+<div class="fg">
+  <label>Company</label>
+  <input id="company" name="company" maxlength="40" type="text" placeholder="Company Name">
+</div>
+
+<div class="fg">
+<label>Service Interest</label>
+<select id="00Nf600000G9yEA" name="00Nf600000G9yEA">
+<option value="">Select Service</option>
+<option value="Salesforce">Salesforce</option>
+<option value="Cloud Infrastructure">Cloud Infrastructure</option>
+<option value="Web/App Dev">Web/App Dev</option>
+<option value="IT Consulting">IT Consulting</option>
+<option value="Managed Services">Managed Services</option>
+<option value="Cybersecurity">Cybersecurity</option>
+<option value="Data Analytics">Data Analytics</option>
+<option value="Other">Other</option>
+</select>
+</div>
+
+<button type="submit" class="btn btn-ai btn-full">
+Send Message
+</button>
+
+</form>
     </div>
   </div>
 </div>
